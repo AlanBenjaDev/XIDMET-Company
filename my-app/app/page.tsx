@@ -6,6 +6,7 @@ import CTA from "@/components/CTA"
 import Contact from "@/components/Contacto"
 import Footer from "@/components/Footer"
 import Performance from "@/components/Performance"
+import Projects from "@/components/Proyects"
 
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
+        <Projects />
         <Performance /> 
         <CTA />
         <Contact />
