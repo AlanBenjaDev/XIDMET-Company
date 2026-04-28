@@ -4,9 +4,10 @@ import { motion } from 'framer-motion'
 export default function Header() {
   const navLinks = [
     { name: 'Soluciones', href: '#servicios' },
-    { name: 'Xidmet Team', href: '#nosotros' },
+    { name: 'Sobre Nosotros', href: '#nosotros' },
     { name: 'Proyectos', href: '#resultados' },
-    { name: 'Presupuesto', href: '#contacto' },
+    {name: 'Integrantes', href: '#equipo' },
+    { name: 'Contacto', href: '#contacto' },
   ]
 
   return (

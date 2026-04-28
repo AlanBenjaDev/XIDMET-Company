@@ -7,6 +7,7 @@ import Contact from "@/components/Contacto"
 import Footer from "@/components/Footer"
 import Performance from "@/components/Performance"
 import Projects from "@/components/Proyects"
+import Member from "@/components/Member"
 
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <Member />
         <Services />
         <Projects />
         <Performance /> 
