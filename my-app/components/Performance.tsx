@@ -1,25 +1,29 @@
 'use client'
 import { motion } from 'framer-motion'
 
-const standards = [
-  { 
-    label: 'Disponibilidad del Sistema', 
-    value: '99.9%', 
-    desc: 'Garantizamos que tus automatizaciones y seguridad estén operativas las 24 horas.' 
-  },
-  { 
-    label: 'Tiempo de Respuesta', 
-    value: '< 1s', 
-    desc: 'Latencia mínima en el control de dispositivos desde tu smartphone o panel local.' 
-  },
-  { 
-    label: 'Eficiencia Energética', 
-    value: '-35%', 
-    desc: 'Reducción promedio en el consumo eléctrico mediante gestión inteligente de iluminación.' 
-  },
-]
+import { useLanguage } from '@/components/TranslateButton'
 
 export default function Performance() {
+  const { t } = useLanguage();
+
+  const standards = [
+    { 
+      label: t.performance.kpi1Titulo, // "Disponibilidad del Sistema"
+      value: '99.9%', 
+      desc: t.performance.kpi1Texto // "Garantizamos que tus automatizaciones..." 
+    },
+    { 
+      label: t.performance.kpi2Titulo, // "Tiempo de Respuesta"
+      value: '< 1s', 
+      desc: t.performance.kpi2Texto // "Latencia mínima en el control..." 
+    },
+    { 
+      label: t.performance.kpi3Titulo, // "Eficiencia Energética"
+      value: '-35%', 
+      desc: t.performance.kpi3Texto // "Reducción promedio en el consumo..." 
+    },
+  ]
+
   return (
     <section id="resultados" className="py-24 bg-[#020617] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -41,8 +45,10 @@ export default function Performance() {
             whileInView={{ y: 0, opacity: 1 }}
             className="text-3xl md:text-5xl font-light mt-4 tracking-tight leading-tight"
           >
-            Ingeniería de precisión para <br /> 
-            <span className="font-bold text-[#34d399]">un control total sin fallas.</span>
+            {t.performance.titulo.split(" para ")[0]} para <br /> 
+            <span className="font-bold text-[#34d399]">
+              para {t.performance.titulo.split(" para ")[1] || t.performance.titulo}
+            </span>
           </motion.h2>
         </div>
 
@@ -86,11 +92,14 @@ export default function Performance() {
           className="mt-16 flex flex-col md:flex-row items-center justify-between border-t border-[#1e293b] pt-8 gap-4"
         >
           <p className="text-slate-500 text-[10px] tracking-[0.2em] uppercase text-center md:text-left">
-            * Valores técnicos basados en protocolos de seguridad y hardware de grado industrial.
+            {t.performance.notaFooter}
           </p>
+          
           <div className="px-4 py-2 bg-[#10b981]/10 rounded-full border border-[#10b981]/20 flex items-center gap-2">
             <div className="w-2 h-2 bg-[#10b981] animate-pulse rounded-full" />
-            <span className="text-[10px] text-[#10b981] uppercase tracking-widest font-bold">Monitoreo Activo</span>
+            <span className="text-[10px] text-[#10b981] uppercase tracking-widest font-bold">
+              {t.cta.subtitulo} {/* "Monitoreo Activo" / "Active Monitoring" */}
+            </span>
           </div>
         </motion.div>
       </div>

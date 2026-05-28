@@ -2,37 +2,44 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
 
-const services = [
-  {
-    title: 'Seguridad Inteligente',
-    icon: 'mdi:cctv', 
-    parr: 'Instalación de cámaras IP y sistemas de monitoreo avanzado con acceso remoto desde cualquier dispositivo.'
-  },
-  {
-    title: 'Domótica Residencial',
-    icon: 'mdi:home-automation',
-    parr: 'Automatización completa de tu hogar: control de cortinas, sensores de movimiento y climatización inteligente.'
-  },
-  {
-    title: 'Iluminación Automatizada',
-    icon: 'mdi:lightbulb-auto-outline',
-    parr: 'Gestión eficiente de luces interiores y exteriores. Escenas personalizadas y ahorro energético programado.'
-  },
-  {
-    title: 'Accesos Automatizados',
-    icon: 'mdi:gate',
-    parr: 'Automatización de portones y cerraduras electrónicas con apertura mediante móvil, tag o reconocimiento.'
-  },
-  {
-    title: 'Control Industrial & Eléctrico',
-    icon: 'mdi:factory',
-    parr: 'Tableros eléctricos inteligentes y automatización de procesos para empresas que buscan eficiencia y seguridad.'
-  },
-]
+// 1. Importamos el hook de idioma
+import { useLanguage } from '@/components/TranslateButton'
 
 export default function Services() {
+  // 2. Extraemos las traducciones dinámicas
+  const { t } = useLanguage();
+
+  // Estructura de servicios sincronizada dinámicamente con tu diccionario
+  const services = [
+    {
+      title: t.servicios.s1Titulo, // "Seguridad Inteligente"
+      icon: 'mdi:cctv', 
+      parr: t.servicios.s1Texto // "Instalación de cámaras IP y sistemas de monitoreo..."
+    },
+    {
+      title: t.servicios.s2Titulo, // "Domótica Residencial"
+      icon: 'mdi:home-automation',
+      parr: t.servicios.s2Texto // "Automatización completa de tu hogar..."
+    },
+    {
+      title: t.servicios.s3Titulo, // "Iluminación Automatizada"
+      icon: 'mdi:lightbulb-auto-outline',
+      parr: t.servicios.s3Texto // "Gestión eficiente de luces interiores y exteriores..."
+    },
+    {
+      title: t.servicios.s4Titulo, // "Accesos Automatizados"
+      icon: 'mdi:gate',
+      parr: t.servicios.s4Texto // "Automatización de portones y cerraduras electrónicas..."
+    },
+    {
+      title: t.servicios.s5Titulo, // "Control Industrial & Eléctrico"
+      icon: 'mdi:factory',
+      parr: t.servicios.s5Texto // "Tableros eléctricos inteligentes y automatización de procesos..."
+    },
+  ]
+
   return (
-    /* SECCIÓN DE FONDO: Ahora ocupa todo el ancho sin restricciones */
+    /* SECCIÓN DE FONDO: Ocupa todo el ancho sin restricciones */
     <section id="servicios" className="w-full py-24 bg-[#020617] border-t border-white/5">
       
       {/* CONTENEDOR INTERNO: Este es el que centra y limita el contenido */}
@@ -44,10 +51,14 @@ export default function Services() {
             whileInView={{ opacity: 1 }}
             className="text-[#10b981] text-xs font-bold tracking-[0.3em] uppercase mb-2"
           >
-            Especialidades
+            {t.servicios.subtitulo} {/* "Especialidades" */}
           </motion.span>
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white tracking-tighter">
-            Nuestras <span className="text-[#10b981]">Soluciones Técnicas.</span>
+            {/* Manipulación simple de strings para asegurar que el punto final o color resalte bien en inglés y español */}
+            {t.servicios.titulo.includes("Nuestras") ? "Nuestras " : "Our "}
+            <span className="text-[#10b981]">
+              {t.servicios.titulo.replace("Nuestras ", "").replace("Our ", "")}
+            </span>
           </h2>
         </div>
 
@@ -79,13 +90,20 @@ export default function Services() {
             </motion.div>
           ))}
 
+          {/* Tarjeta estática final: Desafío a medida */}
           <motion.div
             className="group border-2 border-dashed border-[#1e293b] rounded-2xl p-8 flex flex-col items-center justify-center text-center opacity-60 hover:opacity-100 transition-all hover:border-[#10b981]/50"
           >
             <Icon icon="mdi:tools" className="text-3xl text-[#10b981] mb-4" />
-            <p className="text-[#10b981] font-bold uppercase tracking-widest text-xs">Desafío a medida</p>
-            <h3 className="text-white font-semibold mt-2">¿Necesitás una solución específica?</h3>
-            <p className="text-xs text-slate-500 mt-2">Personalizamos cada componente de tu sistema.</p>
+            <p className="text-[#10b981] font-bold uppercase tracking-widest text-xs">
+              {t.servicios.s6Titulo} {/* "Desafío a medida" */}
+            </p>
+            <h3 className="text-white font-semibold mt-2">
+              {t.servicios.s6Texto.split("? ")[0] + "?"} {/* "¿Necesitás una solución específica?" */}
+            </h3>
+            <p className="text-xs text-slate-500 mt-2">
+              {t.servicios.s6Texto.split("? ")[1] || t.servicios.s6Texto} {/* "Personalizamos cada componente de tu sistema." */}
+            </p>
           </motion.div>
         </div>
       </div>

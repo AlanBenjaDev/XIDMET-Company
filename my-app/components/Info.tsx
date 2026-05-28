@@ -2,12 +2,18 @@
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
+// 1. Importamos el hook de idioma
+import { useLanguage } from '@/components/TranslateButton'
+
 export default function About() {
+  // 2. Extraemos las traducciones dinámicas
+  const { t } = useLanguage();
+
+  // Mapeamos los objetivos estratégicos dinámicamente según el diccionario activo
   const objetivos = [
-    { desc: "Instalar en 3 colegios en 6 meses", label: "Alcance", icon: "mdi:school-outline" },
-    { desc: "100% efectividad en alertas", label: "Precisión", icon: "mdi:target" },
-    { desc: "98% disponibilidad offline", label: "Conectividad", icon: "mdi:wifi-off" },
-    { desc: "0 tareas manuales", label: "Productividad", icon: "mdi:clock-fast" },
+    { desc: t.about.meta1Texto, label: t.about.meta1Titulo, icon: "mdi:school-outline" }, // Alcance
+    { desc: t.about.meta2Texto, label: t.about.meta2Titulo, icon: "mdi:target" },         // Precisión
+    { desc: t.about.meta3Texto, label: t.about.meta3Titulo, icon: "mdi:wifi-off" }        // Conectividad
   ]
 
   return (
@@ -22,13 +28,20 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-sm uppercase tracking-widest text-[#10b981] font-bold">
-              Nuestra Ingeniería
+              {t.about.subtitulo} {/* "Nuestra Ingeniería" */}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6 text-white leading-tight uppercase tracking-tighter">
-              Soluciones inteligentes para desafíos reales
+              {t.about.titulo} {/* "Soluciones inteligentes para desafíos reales" */}
             </h2>
             <p className="text-slate-400 mb-6 leading-relaxed text-lg">
-              En <span className="text-[#34d399] font-bold">Xidmet Company</span> transformamos espacios convencionales en infraestructuras autónomas. Fusionamos electrónica avanzada, seguridad de vanguardia y sistemas eléctricos robustos.
+              {/* Renderizado adaptado para no romper el bloque destacado en negrita */}
+              {t.about.descripcion.includes("Xidmet Company") ? (
+                <>
+                  En <span className="text-[#34d399] font-bold">Xidmet Company</span> transformamos espacios convencionales en infraestructuras autónomas. Fusionamos electrónica avanzada, seguridad de vanguardia y sistemas eléctricos robustos.
+                </>
+              ) : (
+                t.about.descripcion
+              )}
             </p>
           </motion.div>
 
@@ -60,9 +73,11 @@ const SITAE = {
             whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 20 }}
             className="p-10 bg-[#0f172a]/30 border-l-4 border-[#10b981] rounded-r-2xl"
           >
-            <h3 className="text-[#10b981] font-black uppercase tracking-widest text-sm mb-4">Misión</h3>
+            <h3 className="text-[#10b981] font-black uppercase tracking-widest text-sm mb-4">
+              {t.about.misionTitulo} {/* "Misión" */}
+            </h3>
             <p className="text-white text-xl font-medium leading-relaxed italic">
-              "Facilitar la gestión del tiempo mediante tecnología confiable, eliminando procesos manuales para potenciar la labor pedagógica."
+              {t.about.misionTexto}
             </p>
           </motion.div>
 
@@ -70,16 +85,20 @@ const SITAE = {
             whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 20 }}
             className="p-10 bg-[#0f172a]/30 border-l-4 border-[#0ea5e9] rounded-r-2xl"
           >
-            <h3 className="text-[#0ea5e9] font-black uppercase tracking-widest text-sm mb-4">Visión</h3>
+            <h3 className="text-[#0ea5e9] font-black uppercase tracking-widest text-sm mb-4">
+              {t.about.visionTitulo} {/* "Visión" */}
+            </h3>
             <p className="text-white text-xl font-medium leading-relaxed italic">
-              "Convertir nuestros sistemas en el estándar de conectividad y automatización escolar a nivel regional y provincial."
+              {t.about.visionTexto}
             </p>
           </motion.div>
         </div>
 
         {/* PARTE 3: OBJETIVOS (Grid de Indicadores) */}
         <div className="text-center mb-12">
-            <h3 className="text-white font-bold uppercase tracking-[0.3em] text-xs">Metas Estratégicas</h3>
+            <h3 className="text-white font-bold uppercase tracking-[0.3em] text-xs">
+              {t.about.metasTitulo} {/* "Metas Estratégicas" */}
+            </h3>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {objetivos.map((obj, i) => (
@@ -89,8 +108,12 @@ const SITAE = {
               className="bg-[#0f172a] border border-[#1e293b] p-6 rounded-2xl text-center hover:border-[#10b981]/50 transition-all"
             >
               <Icon icon={obj.icon} className="text-[#10b981] text-3xl mx-auto mb-4" />
-              <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-2">{obj.label}</div>
-              <div className="text-white font-bold text-sm leading-tight">{obj.desc}</div>
+              <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-2">
+                {obj.label}
+              </div>
+              <div className="text-white font-bold text-sm leading-tight">
+                {obj.desc}
+              </div>
             </motion.div>
           ))}
         </div>

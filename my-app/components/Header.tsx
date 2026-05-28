@@ -1,13 +1,17 @@
 'use client'
 import { motion } from 'framer-motion'
 
+import LanguageSelector, { useLanguage } from '@/components/TranslateButton' 
+
 export default function Header() {
+  const { t } = useLanguage();
+
   const navLinks = [
-    { name: 'Soluciones', href: '#servicios' },
-    { name: 'Sobre Nosotros', href: '#nosotros' },
-    { name: 'Proyectos', href: '#resultados' },
-    {name: 'Integrantes', href: '#equipo' },
-    { name: 'Contacto', href: '#contacto' },
+    { name: t.nav.soluciones, href: '#servicios' },
+    { name: t.nav.nosotros, href: '#nosotros' },
+    { name: t.nav.proyectos, href: '#resultados' },
+    { name: t.nav.equipo, href: '#equipo' },
+    { name: t.nav.contacto, href: '#contacto' },
   ]
 
   return (
@@ -36,15 +40,22 @@ export default function Header() {
             ))}
           </nav>
 
-          <a 
-            href="#contacto" 
-            className="bg-[#10b981] text-[#020617] px-6 py-2 rounded-full text-[10px] md:text-xs font-black tracking-widest uppercase hover:bg-[#34d399] hover:shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all"
-          >
-            Soporte Técnico
-          </a>
+          <div className="flex items-center gap-4">
+            
+            <LanguageSelector />
+        
+            <a 
+              href="#contacto" 
+              className="bg-[#10b981] text-[#020617] px-6 py-2 rounded-full text-[10px] md:text-xs font-black tracking-widest uppercase hover:bg-[#34d399] hover:shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all"
+            >
+              {t.hero.boton}
+            </a>
+          </div>
+
         </div>
       </motion.header>
 
+ 
       <nav className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] z-50 bg-[#0f172a]/90 backdrop-blur-xl border border-white/5 rounded-2xl px-8 py-4 flex justify-between items-center shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
         {navLinks.map((link) => (
           <a 

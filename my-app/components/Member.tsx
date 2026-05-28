@@ -2,41 +2,45 @@
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
+import { useLanguage } from '@/components/TranslateButton'
+
 export default function Equipo() {
+  const { t } = useLanguage();
+
   const integrantes = [
     {
       nombre: 'Alan Andrada',
-      rol: 'Director IT & CEO',
+      rol: t.equipo.rolAlan,
       icon: 'mdi:shield-crown-outline',
       highlight: true
     },
     {
       nombre: 'Mia Rodriguez',
-      rol: 'Líder de Diseño Visual',
+      rol: t.equipo.rolMia, 
       icon: 'mdi:palette-outline',
       highlight: false
     },
     {
       nombre: 'Federico Sanchez',
-      rol: 'Gestión de Costos',
+      rol: t.equipo.rolFederico, 
       icon: 'mdi:finance',
       highlight: false
     },
     {
       nombre: 'Joaquin Ferreyra',
-      rol: 'Pruebas de Calidad (QA)',
+      rol: t.equipo.rolJoaquin, 
       icon: 'mdi:check-decagram-outline',
       highlight: false
     },
     {
       nombre: 'Ignacio Gonzales',
-      rol: 'Técnico Especialista',
+      rol: t.equipo.rolIgnacio, 
       icon: 'mdi:tools',
       highlight: false
     },
     {
       nombre: 'Maximo Ceballos',
-      rol: 'Técnico Especialista',
+      rol: t.equipo.rolMaximo, 
       icon: 'mdi:cogs',
       highlight: false
     }
@@ -54,10 +58,10 @@ export default function Equipo() {
             whileInView={{ opacity: 1 }}
             className="text-[#10b981] text-[10px] font-black tracking-[0.5em] uppercase"
           >
-            Capital Humano
+            {t.equipo.subtitulo} {/* "Capital Humano" / "Human Capital" */}
           </motion.span>
           <h2 className="text-3xl md:text-5xl text-white font-black tracking-tighter mt-4 uppercase">
-            NUESTRO <span className="text-[#10b981]">EQUIPO</span>
+            {t.equipo.titulo.split(" ")[0]} <span className="text-[#10b981]">{t.equipo.titulo.split(" ")[1] || "EQUIPO"}</span>
           </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#10b981] to-transparent mx-auto mt-6" />
         </div>
@@ -72,8 +76,8 @@ export default function Equipo() {
               viewport={{ once: true }}
               className={`group p-8 rounded-[2rem] border transition-all duration-500 ${
                 persona.highlight 
-                ? 'bg-[#10b981]/5 border-[#10b981]/30 shadow-[0_0_30px_rgba(16,185,129,0.05)]' 
-                : 'bg-[#0f172a]/40 border-white/5 hover:border-[#10b981]/20'
+                  ? 'bg-[#10b981]/5 border-[#10b981]/30 shadow-[0_0_30px_rgba(16,185,129,0.05)]' 
+                  : 'bg-[#0f172a]/40 border-white/5 hover:border-[#10b981]/20'
               }`}
             >
               <div className="flex items-start justify-between mb-6">
