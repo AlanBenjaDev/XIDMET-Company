@@ -2,7 +2,9 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-
+// =========================================================================
+// 1. DICCIONARIO GLOBAL CON TODO EL COPY DE XIDMET COMPANY
+// =========================================================================
 export const diccionario = {
   es: {
     nav: { 
@@ -16,7 +18,7 @@ export const diccionario = {
       tagline: "Tu entorno, inteligente y seguro.",
       descripcion: "Expertos en automatización electrónica, eléctrica y seguridad integral. Sistemas de alta calidad, simples de usar y diseñados para crecer con vos.",
       btnSoluciones: "Nuestras Soluciones",
-      btnContacto: "Contactar un técnico",
+      btnContacto: "Contactar a un técnico",
       boton: "Soporte Técnico"
     },
     about: {
@@ -24,14 +26,14 @@ export const diccionario = {
       titulo: "Soluciones inteligentes para desafíos reales",
       descripcion: "En Xidmet Company transformamos espacios convencionales en infraestructuras autónomas. Fusionamos electrónica avanzada, seguridad de vanguardia y sistemas eléctricos robustos.",
       misionTitulo: "Misión",
-      misionTexto: '"Otorgar la mejor calidad en los sistemas altamente robustos,de instalación de camaras y sistemas automatizados"',
+      misionTexto: '"Otorgar la mejor calidad en sistemas altamente robustos de instalación de cámaras y sistemas automatizados."',
       visionTitulo: "Visión",
-      visionTexto: '"Converti nuestra empresa en un estandar de automatizaciones y domotica."',
+      visionTexto: '"Convertir a nuestra empresa en un estándar de automatizaciones y domótica."',
       metasTitulo: "Metas Estratégicas",
       meta1Titulo: "Alcance",
-      meta1Texto: "Instalar nuestros sistemas en gran parte de la provincia",
+      meta1Texto: "Instalar nuestros sistemas en gran parte de la provincia.",
       meta2Titulo: "Precisión",
-      meta2Texto: "Disminuir el margen de error",
+      meta2Texto: "Disminuir el margen de error.",
       meta3Titulo: "Conectividad",
       meta3Texto: "Diseñar sistemas altamente enfocados en la experiencia de usuario."
     },
@@ -89,13 +91,13 @@ export const diccionario = {
     contacto: {
       subtitulo: "Central de Consultas",
       titulo: "Iniciá tu Transformación Técnica",
-      descripcion: "¿Listo para automatizar tu espacio en Tanti? Completa el formulario y un técnico de nuestro equipo se pondrá en contacto por WhatsApp para asesorarte.",
+      descripcion: "¿Listo para automatizar tu espacio en Tanti? Completá el formulario y un técnico de nuestro equipo se pondrá en contacto por WhatsApp para asesorarte.",
       btnEnviar: "Enviar Consulta Técnica",
       waMensaje: "Hola Xidmet Company, me interesa una solución técnica. Nombre: {name}, Email: {email}, Consulta: {message}",
       alertaExito: "¡Solicitud recibida! Conectando con nuestro centro técnico...",
       phNombre: "Nombre completo",
       phEmail: "Correo electrónico",
-      phMensaje: "Describí tu necesidad (Cámaras, iluminación, portones, etc.)"
+      phMensaje: "Describí tu necesidad (cámaras, iluminación, portones, etc.)"
     },
     footer: {
       tagline: "Sistemas automatizados, seguros y simples."
@@ -192,7 +194,7 @@ export const diccionario = {
       alertaExito: "Inquiry received! Connecting with our technical center...",
       phNombre: "Full name",
       phEmail: "Email address",
-      phMensaje: "Describe your needs (Cams, lighting, gates, etc.)"
+      phMensaje: "Describe your needs (cams, lighting, gates, etc.)"
     },
     footer: {
       tagline: "Automated, secure, and simple systems."
@@ -208,7 +210,9 @@ interface LanguageContextType {
   setIdioma: (lang: Idioma) => void;
 }
 
-
+// =========================================================================
+// 2. CONTEXTO Y PROVEEDOR GLOBAL
+// =========================================================================
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
@@ -239,7 +243,9 @@ export function useLanguage() {
   return context;
 }
 
-
+// =========================================================================
+// 3. COMPONENTE VISUAL DEL BOTÓN
+// =========================================================================
 export default function LanguageSelector() {
   const { idioma, setIdioma } = useLanguage();
 

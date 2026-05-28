@@ -1,28 +1,35 @@
 'use client'
 import { motion } from 'framer-motion'
-
 import { useLanguage } from '@/components/TranslateButton'
 
 export default function Performance() {
-  const { t } = useLanguage();
+  const { t, idioma } = useLanguage();
 
   const standards = [
     { 
-      label: t.performance.kpi1Titulo, // "Disponibilidad del Sistema"
+      label: t.performance.kpi1Titulo, 
       value: '99.9%', 
-      desc: t.performance.kpi1Texto // "Garantizamos que tus automatizaciones..." 
+      desc: t.performance.kpi1Texto 
     },
     { 
-      label: t.performance.kpi2Titulo, // "Tiempo de Respuesta"
+      label: t.performance.kpi2Titulo, 
       value: '< 1s', 
-      desc: t.performance.kpi2Texto // "Latencia mínima en el control..." 
+      desc: t.performance.kpi2Texto 
     },
     { 
-      label: t.performance.kpi3Titulo, // "Eficiencia Energética"
+      label: t.performance.kpi3Titulo, 
       value: '-35%', 
-      desc: t.performance.kpi3Texto // "Reducción promedio en el consumo..." 
+      desc: t.performance.kpi3Texto 
     },
   ]
+
+  // Lógica limpia de separación según el idioma activo
+  const separador = idioma === 'en' ? ' for ' : ' para ';
+  const partesTitulo = t.performance.titulo.split(separador);
+  
+  const primeraParte = partesTitulo[0];
+  // Si por alguna razón el split falla, usamos por defecto la segunda mitad original
+  const segundaParte = partesTitulo[1] || (idioma === 'en' ? 'total control without failures.' : 'un control total sin fallas.');
 
   return (
     <section id="resultados" className="py-24 bg-[#020617] text-white overflow-hidden">
@@ -45,9 +52,9 @@ export default function Performance() {
             whileInView={{ y: 0, opacity: 1 }}
             className="text-3xl md:text-5xl font-light mt-4 tracking-tight leading-tight"
           >
-            {t.performance.titulo.split(" para ")[0]} para <br /> 
+            {primeraParte} {separador} <br /> 
             <span className="font-bold text-[#34d399]">
-              para {t.performance.titulo.split(" para ")[1] || t.performance.titulo}
+              {segundaParte}
             </span>
           </motion.h2>
         </div>
@@ -98,7 +105,7 @@ export default function Performance() {
           <div className="px-4 py-2 bg-[#10b981]/10 rounded-full border border-[#10b981]/20 flex items-center gap-2">
             <div className="w-2 h-2 bg-[#10b981] animate-pulse rounded-full" />
             <span className="text-[10px] text-[#10b981] uppercase tracking-widest font-bold">
-              {t.cta.subtitulo} {/* "Monitoreo Activo" / "Active Monitoring" */}
+              {t.cta.subtitulo}
             </span>
           </div>
         </motion.div>

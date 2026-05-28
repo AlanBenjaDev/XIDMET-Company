@@ -40,7 +40,7 @@ export default function Projects() {
           >
             {t.proyectos.titulo.replace("Éxito.", "")}
             <span className="text-[#0ea5e9]">
-              {t.proyectos.titulo.includes("Éxito.") ? "Éxito." : "Success Stories."}
+              {t.proyectos.titulo.includes("Éxito.") ? "Éxito." : ""}
             </span>
           </motion.h2>
         </div>
