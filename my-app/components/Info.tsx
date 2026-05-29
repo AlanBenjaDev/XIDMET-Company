@@ -2,25 +2,21 @@
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
-// 1. Importamos el hook de idioma
 import { useLanguage } from '@/components/TranslateButton'
 
 export default function About() {
-  // 2. Extraemos las traducciones dinámicas
   const { t } = useLanguage();
 
-  // Mapeamos los objetivos estratégicos dinámicamente según el diccionario activo
   const objetivos = [
-    { desc: t.about.meta1Texto, label: t.about.meta1Titulo, icon: "mdi:school-outline" }, // Alcance
-    { desc: t.about.meta2Texto, label: t.about.meta2Titulo, icon: "mdi:target" },         // Precisión
-    { desc: t.about.meta3Texto, label: t.about.meta3Titulo, icon: "mdi:wifi-off" }        // Conectividad
+    { desc: t.about.meta1Texto, label: t.about.meta1Titulo, icon: "mdi:school-outline" }, 
+    { desc: t.about.meta2Texto, label: t.about.meta2Titulo, icon: "mdi:target" },         
+    { desc: t.about.meta3Texto, label: t.about.meta3Titulo, icon: "mdi:wifi-off" }        
   ]
 
   return (
     <section id="nosotros" className="w-full bg-[#020617] py-28 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* PARTE 1: INTRODUCCIÓN Y CÓDIGO */}
         <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -28,13 +24,12 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-sm uppercase tracking-widest text-[#10b981] font-bold">
-              {t.about.subtitulo} {/* "Nuestra Ingeniería" */}
+              {t.about.subtitulo} 
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6 text-white leading-tight uppercase tracking-tighter">
-              {t.about.titulo} {/* "Soluciones inteligentes para desafíos reales" */}
+              {t.about.titulo} 
             </h2>
             <p className="text-slate-400 mb-6 leading-relaxed text-lg">
-              {/* Renderizado adaptado para no romper el bloque destacado en negrita */}
               {t.about.descripcion.includes("Xidmet Company") ? (
                 <>
                   En <span className="text-[#34d399] font-bold">Xidmet Company</span> transformamos espacios convencionales en infraestructuras autónomas. Fusionamos electrónica avanzada, seguridad de vanguardia y sistemas eléctricos robustos.
@@ -67,14 +62,14 @@ const SITAE = {
           </motion.div>
         </div>
 
-        {/* PARTE 2: MISIÓN Y VISIÓN (Layout Industrial) */}
+      
         <div className="grid md:grid-cols-2 gap-8 mb-32">
           <motion.div 
             whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 20 }}
             className="p-10 bg-[#0f172a]/30 border-l-4 border-[#10b981] rounded-r-2xl"
           >
             <h3 className="text-[#10b981] font-black uppercase tracking-widest text-sm mb-4">
-              {t.about.misionTitulo} {/* "Misión" */}
+              {t.about.misionTitulo} 
             </h3>
             <p className="text-white text-xl font-medium leading-relaxed italic">
               {t.about.misionTexto}
@@ -86,7 +81,7 @@ const SITAE = {
             className="p-10 bg-[#0f172a]/30 border-l-4 border-[#0ea5e9] rounded-r-2xl"
           >
             <h3 className="text-[#0ea5e9] font-black uppercase tracking-widest text-sm mb-4">
-              {t.about.visionTitulo} {/* "Visión" */}
+              {t.about.visionTitulo} 
             </h3>
             <p className="text-white text-xl font-medium leading-relaxed italic">
               {t.about.visionTexto}
@@ -94,10 +89,9 @@ const SITAE = {
           </motion.div>
         </div>
 
-        {/* PARTE 3: OBJETIVOS (Grid de Indicadores) */}
         <div className="text-center mb-12">
             <h3 className="text-white font-bold uppercase tracking-[0.3em] text-xs">
-              {t.about.metasTitulo} {/* "Metas Estratégicas" */}
+              {t.about.metasTitulo} 
             </h3>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
