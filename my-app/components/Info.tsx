@@ -17,11 +17,13 @@ export default function About() {
     <section id="nosotros" className="w-full bg-[#020617] py-28 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
+        {/* Sección de Introducción */}
         <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
+            className="md:col-span-2 max-w-3xl" // Ahora toma el ancho completo de su contenedor si no agregás una imagen al lado
           >
             <span className="text-sm uppercase tracking-widest text-[#10b981] font-bold">
               {t.about.subtitulo} 
@@ -30,39 +32,12 @@ export default function About() {
               {t.about.titulo} 
             </h2>
             <p className="text-slate-400 mb-6 leading-relaxed text-lg">
-              {t.about.descripcion.includes("Xidmet Company") ? (
-                <>
-                  En <span className="text-[#34d399] font-bold">Xidmet Company</span> transformamos espacios convencionales en infraestructuras autónomas. Fusionamos electrónica avanzada, seguridad de vanguardia y sistemas eléctricos robustos.
-                </>
-              ) : (
-                t.about.descripcion
-              )}
+              {t.about.descripcion}
             </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="absolute -inset-4 bg-[#10b981]/10 rounded-3xl blur-3xl" />
-            <div className="relative bg-[#0f172a]/80 border border-[#1e293b] rounded-2xl p-8 font-mono text-sm shadow-2xl">
-              <pre className="text-[#34d399] leading-relaxed whitespace-pre-wrap">
-{`// Lógica de Control Xidmet
-const SITAE = {
-  status: "OPTIMIZED",
-  location: "Córdoba, Argentina",
-  safeMode: true,
-  energySaving: "MAX",
-  mission: "AUTOMATION_TOTAL"
-};`}
-              </pre>
-            </div>
           </motion.div>
         </div>
 
-      
+        {/* Sección de Misión y Visión */}
         <div className="grid md:grid-cols-2 gap-8 mb-32">
           <motion.div 
             whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 20 }}
@@ -89,6 +64,7 @@ const SITAE = {
           </motion.div>
         </div>
 
+        {/* Sección de Metas */}
         <div className="text-center mb-12">
             <h3 className="text-white font-bold uppercase tracking-[0.3em] text-xs">
               {t.about.metasTitulo} 

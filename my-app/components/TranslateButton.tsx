@@ -24,11 +24,11 @@ export const diccionario = {
     about: {
       subtitulo: "Nuestra Ingeniería",
       titulo: "Soluciones inteligentes para desafíos reales",
-      descripcion: "En Xidmet Company transformamos espacios convencionales en infraestructuras autónomas. Fusionamos electrónica avanzada, seguridad de vanguardia y sistemas eléctricos robustos.",
+      descripcion: "En Xidmet Company transformamos espacios comunes en lugares inteligentes. Conectamos tecnología avanzada, cámaras de seguridad y sistemas eléctricos de forma simple y eficiente.",
       misionTitulo: "Misión",
       misionTexto: '"Otorgar la mejor calidad en sistemas altamente robustos de instalación de cámaras y sistemas automatizados."',
       visionTitulo: "Visión",
-      visionTexto: '"Convertir a nuestra empresa en un estándar de automatizaciones y domótica."',
+      visionTexto: '"Ser los líderes en crear espacios que se manejen solos, uniendo sistemas de control modernos con tecnología de alta calidad para facilitar la vida de las personas y empresas."',
       metasTitulo: "Metas Estratégicas",
       meta1Titulo: "Alcance",
       meta1Texto: "Instalar nuestros sistemas en gran parte de la provincia.",
@@ -85,7 +85,7 @@ export const diccionario = {
     cta: {
       subtitulo: "Monitoreo Activo",
       titulo: "Llevá tu espacio al próximo nivel técnico",
-      descripcion: "Diseñamos infraestructuras inteligentes que garantizan control total, eficiencia energética y seguridad máxima en cada conexión.",
+      descripcion: "Diseñamos infraestructuras inteligentes que garantizan control total, efficiency energética y seguridad máxima en cada conexión.",
       btnCta: "Solicitar Consultoría Técnica"
     },
     contacto: {
@@ -121,16 +121,16 @@ export const diccionario = {
     about: {
       subtitulo: "Our Engineering",
       titulo: "Smart solutions for real challenges",
-      descripcion: "At Xidmet Company, we transform conventional spaces into autonomous infrastructures. We merge advanced electronics, cutting-edge security, and robust electrical systems.",
+      descripcion: "At Xidmet Company, we turn common spaces into smart environments. We connect advanced technology, security cameras, and electrical systems in a simple and efficient way.",
       misionTitulo: "Mission",
       misionTexto: '"To provide the highest quality in highly robust camera installation and automated systems."',
       visionTitulo: "Vision",
-      visionTexto: '"To turn our company into a standard for automation and home automation."',
+      visionTexto: '"To be leaders in creating spaces that run themselves, uniting modern control systems with high-quality technology to make life easier for people and businesses."',
       metasTitulo: "Strategic Goals",
       meta1Titulo: "Reach",
-      meta1Texto: "Install our systems across a large part of the province",
+      meta1Texto: "Install our systems across a large part of the province.",
       meta2Titulo: "Precision",
-      meta2Texto: "Minimize the margin of error",
+      meta2Texto: "Minimize the margin of error.",
       meta3Titulo: "Connectivity",
       meta3Texto: "Design systems deeply focused on user experience."
     },
