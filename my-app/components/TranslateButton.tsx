@@ -26,9 +26,9 @@ export const diccionario = {
       titulo: "Soluciones inteligentes para desafíos reales",
       descripcion: "En Xidmet Company transformamos espacios comunes en lugares inteligentes. Conectamos tecnología avanzada, cámaras de seguridad y sistemas eléctricos de forma simple y eficiente.",
       misionTitulo: "Misión",
-      misionTexto: '"Otorgamos la mejor calidad en sistemas altamente robustos de instalación de cámaras y sistemas automatizados."',
+      misionTexto: '"Automatizamos y aseguramos espacios."',
       visionTitulo: "Visión",
-      visionTexto: '"Ser los líderes en la automatización de espacios y sistemas de control con tecnología de alta calidad para empresas y personas."',
+      visionTexto: '"Liderar la automatización de espacios."',
       metasTitulo: "Metas Estratégicas",
       meta1Titulo: "Alcance",
       meta1Texto: "Instalar nuestros sistemas en gran parte de la provincia.",
@@ -85,8 +85,8 @@ export const diccionario = {
     cta: {
       subtitulo: "Monitoreo Activo",
       titulo: "Llevá tu espacio al próximo nivel técnico",
-      descripcion: "Diseñamos infraestructuras inteligentes que garantizan control total, efficiency energética y seguridad máxima en cada conexión.",
-      btnCta: "Solicitar Consultoría Técnica"
+      descripcion: "Diseñamos infraestructuras inteligentes que garantizan control total, eficiencia energética y seguridad máxima en cada conexión.",
+      btnCta: "Solicitar Consultoría Técnico"
     },
     contacto: {
       subtitulo: "Central de Consultas",
@@ -123,9 +123,9 @@ export const diccionario = {
       titulo: "Smart solutions for real challenges",
       descripcion: "At Xidmet Company, we turn common spaces into smart environments. We connect advanced technology, security cameras, and electrical systems in a simple and efficient way.",
       misionTitulo: "Mission",
-      misionTexto: '"To provide the highest quality in highly robust camera installation and automated systems."',
+      misionTexto: '"We automate and secure spaces."',
       visionTitulo: "Vision",
-      visionTexto: '"To be leaders in creating spaces that run themselves, uniting modern control systems with high-quality technology to make life easier for people and businesses."',
+      visionTexto: '"To lead the automation of spaces."',
       metasTitulo: "Strategic Goals",
       meta1Titulo: "Reach",
       meta1Texto: "Install our systems across a large part of the province.",
@@ -174,7 +174,7 @@ export const diccionario = {
       kpi1Titulo: "System Availability",
       kpi1Texto: "We guarantee that your automation and security are operational 24 hours a day.",
       kpi2Titulo: "Response Time",
-      kpi2Texto: "There is minimal latency in device control from your smartphone or local panel.",
+      kpi2Texto: "Minimal latency in device control from your smartphone or local panel.",
       kpi3Titulo: "Energy Efficiency",
       kpi3Texto: "Average reduction in power consumption through intelligent lighting management.",
       notaFooter: "* Technical values based on security protocols and industrial-grade hardware."
