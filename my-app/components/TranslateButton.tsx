@@ -26,7 +26,7 @@ export const diccionario = {
       titulo: "Soluciones inteligentes para desafíos reales",
       descripcion: "En Xidmet Company transformamos espacios comunes en lugares inteligentes. Conectamos tecnología avanzada, cámaras de seguridad y sistemas eléctricos de forma simple y eficiente.",
       misionTitulo: "Misión",
-      misionTexto: '"Automatizamos y aseguramos espacios con calidad altamente robusta."',
+      misionTexto: '"Automatizamos y aseguramos espacios con calidad highly robusta."',
       visionTitulo: "Visión",
       visionTexto: '"Ser los líderes en la automatización de espacios y sistemas de control con tecnología de alta calidad."',
       metasTitulo: "Metas Estratégicas",
@@ -112,7 +112,7 @@ export const diccionario = {
       subtitulo: "Monitoreo Activo",
       titulo: "Llevá tu espacio al próximo nivel técnico",
       descripcion: "Diseñamos infraestructuras inteligentes que garantizan control total, eficiencia energética y seguridad máxima en cada conexión.",
-      btnCta: "Solicitar Consultoría Técnico"
+      btnCta: "Solicitar Consultoría Técnica"
     },
     contacto: {
       subtitulo: "Central de Consultas",

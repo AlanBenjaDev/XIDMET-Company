@@ -11,7 +11,7 @@ import CTA from "@/components/CTA"
 import Contact from "@/components/Contacto"
 import Footer from "@/components/Footer"
 import Performance from "@/components/Performance"
-import Projects from "@/components/case"
+import Projects from "@/components/Proyects"
 import Member from "@/components/Member"
 import XidBot from "@/components/XidBot"
 

@@ -1,11 +1,13 @@
 'use client'
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Icon } from '@iconify/react'
 
 import { useLanguage } from '@/components/TranslateButton'
 
 export default function Projects() {
-  const { t } = useLanguage();
+  const { t } = useLanguage()
+  const [activeImage, setActiveImage] = useState<string | null>(null)
 
   const listaProyectos = [
     {
@@ -16,7 +18,11 @@ export default function Projects() {
       category: t.proyectos.p1Nombre || 'AUTOMATIZACIÓN IOT',
       tags: ['Next.js', 'ESP32', 'IoT', 'Tailwind'],
       link: 'https://sitae-page.vercel.app/', 
-      icon: 'mdi:bell-ring-outline'
+      icon: 'mdi:bell-ring-outline',
+      images: [
+        
+         'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766663/timbre_atqtmk.jpg',
+      ]
     },
     {
       id: 'bomba-taller',
@@ -26,7 +32,10 @@ export default function Projects() {
       category: t.proyectos.p2Nombre || 'INSTALACIÓN INDUSTRIAL',
       tags: ['Electricidad', 'Protección Térmica', 'Automatización', 'Bombas'],
       link: '#', 
-      icon: 'mdi:pump'
+      icon: 'mdi:pump',
+      images: [
+        // 'https://res.cloudinary.com/tu_cloud_name/image/upload/v12345/bomba-1.jpg',
+      ]
     },
     {
       id: 'guardia-electrica',
@@ -36,7 +45,10 @@ export default function Projects() {
       category: t.proyectos.p3Nombre || 'SERVICIOS TÉCNICOS',
       tags: ['Mantenimiento', 'Tableros', 'Diagnóstico', 'Urgencias 24/7'],
       link: '#', 
-      icon: 'mdi:shield-flash-outline'
+      icon: 'mdi:shield-flash-outline',
+      images: [
+        'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766617/guardia_electrica_skulst.jpg',
+      ]
     },
     {
       id: 'inversor-tension',
@@ -46,7 +58,10 @@ export default function Projects() {
       category: t.proyectos.p4Nombre || 'ENERGÍA Y RESPALDO',
       tags: ['Energía Solar', 'Inversores', 'Baterías', 'Suministro Crítico'],
       link: '#', 
-      icon: 'mdi:lightning-bolt-outline'
+      icon: 'mdi:lightning-bolt-outline',
+      images: [
+        'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766634/inversor_tension_ov5s73.jpg',
+      ]
     },
     {
       id: 'tanque-plc-boyas',
@@ -56,12 +71,15 @@ export default function Projects() {
       category: t.proyectos.p5Nombre || 'AUTOMATIZACIÓN Y PLC',
       tags: ['PLC', 'Lógica de Control', 'Sensores de Nivel', 'Automatización'],
       link: '#', 
-      icon: 'mdi:water-boiler'
+      icon: 'mdi:water-boiler',
+      images: [
+        'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766651/tanque_plc_boyas_zjvq9r.jpg',
+      ]
     },
   ]
 
   return (
-    <section id="resultados" className="w-full py-24 bg-[#020617] border-t border-white/5">
+    <section id="resultados" className="w-full py-24 bg-[#020617] border-t border-white/5 relative">
       
       <div className="max-w-7xl mx-auto px-6">
         
@@ -93,10 +111,10 @@ export default function Projects() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group relative bg-[#0f172a]/50 border border-[#1e293b] rounded-3xl p-8 hover:border-[#10b981]/40 transition-all duration-500 overflow-hidden"
+              className="group relative bg-[#0f172a]/50 border border-[#1e293b] rounded-3xl p-8 hover:border-[#10b981]/40 transition-all duration-500 overflow-hidden flex flex-col justify-between"
             >
               
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
                  <Icon icon={p.icon} className="text-9xl text-white" />
               </div>
 
@@ -117,11 +135,35 @@ export default function Projects() {
                   {p.subtitle}
                 </p>
                 
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                <p className="text-slate-400 text-sm leading-relaxed mb-6">
                   {p.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-8">
+                {/* MINI GALERÍA DE IMÁGENES */}
+                {p.images && p.images.length > 0 && (
+                  <div className="mb-6">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">
+                      Galería de Fotos
+                    </span>
+                    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
+                      {p.images.map((imgUrl, imgIdx) => (
+                        <button
+                          key={imgIdx}
+                          onClick={() => setActiveImage(imgUrl)}
+                          className="relative flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border border-slate-700 hover:border-[#10b981] transition-all group/img focus:outline-none"
+                        >
+                          <img 
+                            src={imgUrl} 
+                            alt={`${p.title} preview ${imgIdx + 1}`} 
+                            className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-300"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-2 mb-8 mt-auto">
                   {p.tags.map(tag => (
                     <span key={tag} className="text-[9px] font-bold px-2 py-1 rounded bg-[#1e293b] text-slate-300 uppercase tracking-tighter">
                       {tag}
@@ -129,20 +171,55 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <a 
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#10b981] font-bold text-xs uppercase tracking-widest group/btn w-fit"
-                >
-                  {t.proyectos.btnExplorar} {/* "Explorar Proyecto" / "Explore Project" */}
-                  <Icon icon="mdi:arrow-right" className="group-hover/btn:translate-x-2 transition-transform" />
-                </a>
+                {/* BOTÓN SOLO PARA SITAE */}
+                {p.id === 'sitae' && p.link !== '#' && (
+                  <a 
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#10b981] font-bold text-xs uppercase tracking-widest group/btn w-fit"
+                  >
+                    {t.proyectos.btnExplorar}
+                    <Icon icon="mdi:arrow-right" className="group-hover/btn:translate-x-2 transition-transform" />
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* MODAL DE VISUALIZACIÓN DE IMÁGENES */}
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveImage(null)}
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-4xl max-h-[85vh] rounded-2xl overflow-hidden border border-slate-700 bg-slate-900 shadow-2xl"
+            >
+              <img 
+                src={activeImage} 
+                alt="Vista ampliada del proyecto" 
+                className="w-full h-full object-contain max-h-[85vh]"
+              />
+              <button
+                onClick={() => setActiveImage(null)}
+                className="absolute top-4 right-4 bg-slate-950/80 text-white p-2 rounded-full border border-slate-700 hover:bg-slate-800 transition-colors"
+              >
+                <Icon icon="mdi:close" className="text-xl" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
