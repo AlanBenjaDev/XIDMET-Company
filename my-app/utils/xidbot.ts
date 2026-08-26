@@ -18,9 +18,10 @@ export const XIDBOT_FLOWS: Record<"es" | "en", Record<string, BotStep>> = {
         { text: "Cámaras de Seguridad", nextStep: "camaras_tecnologia", icon: "carbon:security-camera" },
         { text: "Automatización de Luces, Portones o Accesos", nextStep: "domotica", icon: "carbon:home" },
         { text: "Sistemas de Timbres y Alertas Automáticas", nextStep: "timbres", icon: "carbon:alarm" },
+        { text: "Instalación de luminarias", nextStep: "luminarias", icon: "carbon:light" },
       ],
     },
-    // === FLUJO 1: CÁMARAS ===
+    
     camaras_tecnologia: {
       id: "camaras_tecnologia",
       question: "¿Qué tipo de instalación preferís para tus cámaras de seguridad?",
@@ -159,6 +160,47 @@ export const XIDBOT_FLOWS: Record<"es" | "en", Record<string, BotStep>> = {
         },
       ],
     },
+    // === FLUJO 4: LUMINARIAS ===
+    luminarias: {
+      id: "luminarias",
+      question: "¿En qué espacio querés realizar la instalación o renovación de iluminación?",
+      options: [
+        { text: "Interiores (casas, oficinas o locales comerciales)", nextStep: "luminarias_interior" },
+        { text: "Exteriores (patios, fachadas, galpones o vías públicas)", nextStep: "luminarias_exterior" },
+      ],
+    },
+    luminarias_interior: {
+      id: "luminarias_interior",
+      question: "¿Qué tipo de trabajo necesitás realizar?",
+      options: [
+        { 
+          text: "Instalación completa desde cero (con cableado e interruptores nuevos)", 
+          nextStep: "fin", 
+          result: "Realizaremos la instalación eléctrica completa para tus artefactos de iluminación en interiores, incluyendo tendido de cables, térmicas de protección y colocación de llaves e interruptores con terminación profesional." 
+        },
+        { 
+          text: "Reemplazo o modernización a tecnología LED (cambio de artefactos existentes)", 
+          nextStep: "fin", 
+          result: "Efectuaremos el recambio de tus luminarias antiguas por equipos LED de bajo consumo y alta eficiencia, adecuando las conexiones existentes para asegurar el correcto funcionamiento y un mayor ahorro energético." 
+        },
+      ],
+    },
+    luminarias_exterior: {
+      id: "luminarias_exterior",
+      question: "¿Querés agregar encendido automático a las luces exteriores?",
+      options: [
+        { 
+          text: "Sí, por sensor de movimiento o fotocélula (se prenden solas de noche o al detectar presencia)", 
+          nextStep: "fin", 
+          result: "Instalaremos reflectores o luminarias de exterior de alta resistencia equipadas con fotocélulas o sensores de presencia. Esto garantiza mayor seguridad en tu propiedad y evita que las luces queden encendidas de día." 
+        },
+        { 
+          text: "No, prefiero encendido manual con llave tradicional o temporizador fijo", 
+          nextStep: "fin", 
+          result: "Montaremos un sistema de iluminación exterior con comando manual o un reloj temporizador en el tablero eléctrico, ideal para iluminar fachadas, patios o depósitos según el horario que prefieras." 
+        },
+      ],
+    },
   },
   en: {
     inicio: {
@@ -168,6 +210,7 @@ export const XIDBOT_FLOWS: Record<"es" | "en", Record<string, BotStep>> = {
         { text: "Security Cameras", nextStep: "camaras_tecnologia", icon: "carbon:security-camera" },
         { text: "Smart Lights, Gates or Access Automation", nextStep: "domotica", icon: "carbon:home" },
         { text: "Automated Bells & Industrial Sirens", nextStep: "timbres", icon: "carbon:alarm" },
+        { text: "Lighting Fixture Installation", nextStep: "luminarias", icon: "carbon:light" },
       ],
     },
     camaras_tecnologia: {
@@ -303,6 +346,47 @@ export const XIDBOT_FLOWS: Record<"es" | "en", Record<string, BotStep>> = {
           text: "Connected to emergency panic buttons and machinery hazard sensors", 
           nextStep: "fin", 
           result: "We design an advanced, custom industrial safety siren layout. The system activates heavy-duty audio alarms tied directly to strategically placed panic triggers or machine failure sensors, instantly broadcasting alert warnings through your mobile management app." 
+        },
+      ],
+    },
+    // === FLOW 4: LIGHTING ===
+    luminarias: {
+      id: "luminarias",
+      question: "In what area are you planning to install or upgrade lighting?",
+      options: [
+        { text: "Indoor areas (homes, offices, or retail shops)", nextStep: "luminarias_interior" },
+        { text: "Outdoor areas (yards, facades, warehouses, or public roads)", nextStep: "luminarias_exterior" },
+      ],
+    },
+    luminarias_interior: {
+      id: "luminarias_interior",
+      question: "What scope of work do you require?",
+      options: [
+        { 
+          text: "Brand new installation (including fresh wiring and switches)", 
+          nextStep: "fin", 
+          result: "We will handle the complete electrical installation for your indoor lighting fixtures, including cable routing, circuit protection breakers, and mounting switches with a professional finish." 
+        },
+        { 
+          text: "LED retrofitting / upgrade (replacing existing fixtures)", 
+          nextStep: "fin", 
+          result: "We will upgrade your legacy lighting fixtures to energy-efficient LED systems, adjusting existing connections to ensure flawless operation and reduced power consumption." 
+        },
+      ],
+    },
+    luminarias_exterior: {
+      id: "luminarias_exterior",
+      question: "Would you like automatic triggering for outdoor lights?",
+      options: [
+        { 
+          text: "Yes, via motion sensors or photocells (turns on at night or on movement detection)", 
+          nextStep: "fin", 
+          result: "We will install heavy-duty outdoor floodlights or fixtures equipped with photocells or motion sensors. This enhances property security and prevents energy waste during daylight hours." 
+        },
+        { 
+          text: "No, I prefer manual switch control or fixed timer schedules", 
+          nextStep: "fin", 
+          result: "We will deploy an outdoor lighting layout controlled manually or via a timer clock on the electrical panel—ideal for illuminating facades, yards, or storage areas on custom schedules." 
         },
       ],
     },

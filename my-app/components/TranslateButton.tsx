@@ -64,13 +64,39 @@ export const diccionario = {
       s6Texto: "¿Necesitás una solución específica? Personalizamos cada componente de tu sistema."
     },
     proyectos: {
-      subtitulo: "Productos listos para la venta",
-      titulo: "Casos de Éxito.",
-      p1Nombre: "Proyecto 1",
+      subtitulo: "CASOS DE ÉXITO",
+      titulo: "Proyectos que demuestran nuestro Éxito.",
+      btnExplorar: "Explorar Proyecto",
+      
+      // Proyecto 1
+      p1Nombre: "AUTOMATIZACIÓN IOT",
       p1Subtitulo: "SITAE",
       p1Descripcion: "Sistema Inteligente de Timbres Autónomos Escolares",
       p1Texto: "Automatización de cronogramas escolares mediante hardware IoT con control web multiplataforma.",
-      btnExplorar: "Explorar Proyecto"
+      
+      // Proyecto 2
+      p2Nombre: "INSTALACIÓN INDUSTRIAL",
+      p2Subtitulo: "Instalación de Bomba en Taller",
+      p2Descripcion: "Automatización e Instalación Hidroeléctrica",
+      p2Texto: "Montaje e instalación del sistema eléctrico y de bombeo industrial para provisión de agua con protección térmica y maniobra en taller.",
+      
+      // Proyecto 3
+      p3Nombre: "SERVICIOS TÉCNICOS",
+      p3Subtitulo: "Guardia Eléctrica",
+      p3Descripcion: "Mantenimiento Preventivo y Corrección de Emergencias",
+      p3Texto: "Servicio de respuesta rápida ante fallas eléctricas, detección de cortocircuitos, readecuación de tableros y monitoreo continuo de líneas.",
+      
+      // Proyecto 4
+      p4Nombre: "ENERGÍA Y RESPALDO",
+      p4Subtitulo: "Inversor de Tensión",
+      p4Descripcion: "Sistema Backup de Alimentación Continuada",
+      p4Texto: "Implementación e integración de inversores de energía para respaldo en cortes de suministro, garantizando operación crítica sin interrupciones.",
+      
+      // Proyecto 5
+      p5Nombre: "AUTOMATIZACIÓN Y PLC",
+      p5Subtitulo: "Sistema de Tanque Automático con PLC y Boyas",
+      p5Descripcion: "Control de Nivel y Automatización de Llenado",
+      p5Texto: "Lógica programada en PLC acoplada a boyas de nivel electromecánicas para la gestión automatizada y segura del llenado de tanques de reserva."
     },
     performance: {
       titulo: "Ingeniería de precisión para un control total sin fallas.",
@@ -161,13 +187,39 @@ export const diccionario = {
       s6Texto: "Need a specific solution? We customize every component of your system."
     },
     proyectos: {
-      subtitulo: "Products ready for sale",
-      titulo: "Success Stories.",
-      p1Nombre: "Project 1",
+      subtitulo: "SUCCESS STORIES",
+      titulo: "Projects that demonstrate our Success.",
+      btnExplorar: "Explore Project",
+      
+      // Project 1
+      p1Nombre: "IOT AUTOMATION",
       p1Subtitulo: "SITAE",
       p1Descripcion: "Smart Autonomous School Bell System",
       p1Texto: "Automation of school schedules using IoT hardware with cross-platform web control.",
-      btnExplorar: "Explore Project"
+      
+      // Project 2
+      p2Nombre: "INDUSTRIAL INSTALLATION",
+      p2Subtitulo: "Workshop Pump Installation",
+      p2Descripcion: "Hydroelectric Automation & Installation",
+      p2Texto: "Assembly and installation of electrical and industrial pumping system for water supply with thermal protection and control in workshop.",
+      
+      // Project 3
+      p3Nombre: "TECHNICAL SERVICES",
+      p3Subtitulo: "Electrical Emergency Standby",
+      p3Descripcion: "Preventive Maintenance and Emergency Response",
+      p3Texto: "Fast response service for electrical faults, short circuit detection, panel retrofitting, and continuous line monitoring.",
+      
+      // Project 4
+      p4Nombre: "POWER & BACKUP",
+      p4Subtitulo: "Voltage Inverter System",
+      p4Descripcion: "Continuous Power Backup System",
+      p4Texto: "Implementation and integration of power inverters for backup during power outages, ensuring critical operation without interruption.",
+      
+      // Project 5
+      p5Nombre: "AUTOMATION & PLC",
+      p5Subtitulo: "Automatic Tank System with PLC and Floats",
+      p5Descripcion: "Level Control and Automated Filling",
+      p5Texto: "Programmed PLC logic combined with electromechanical level floats for automated, secure management of water storage tanks."
     },
     performance: {
       titulo: "Precision engineering for total control without failures.",

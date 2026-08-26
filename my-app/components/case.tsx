@@ -13,50 +13,9 @@ export default function Projects() {
       title: t.proyectos.p1Subtitulo, // "SITAE"
       subtitle: t.proyectos.p1Descripcion, // "Sistema Inteligente de Timbres Autónomos Escolares"
       description: t.proyectos.p1Texto, // "Automatización de cronogramas escolares mediante hardware IoT con control web multiplataforma."
-      category: t.proyectos.p1Nombre || 'AUTOMATIZACIÓN IOT',
       tags: ['Next.js', 'ESP32', 'IoT', 'Tailwind'],
       link: 'https://sitae-page.vercel.app/', 
       icon: 'mdi:bell-ring-outline'
-    },
-    {
-      id: 'bomba-taller',
-      title: t.proyectos.p2Subtitulo || 'Instalación de Bomba en Taller',
-      subtitle: t.proyectos.p2Descripcion || 'Automatización e Instalación Hidroeléctrica',
-      description: t.proyectos.p2Texto || 'Montaje e instalación del sistema eléctrico y de bombeo industrial para provisión de agua con protección térmica y maniobra en taller.',
-      category: t.proyectos.p2Nombre || 'INSTALACIÓN INDUSTRIAL',
-      tags: ['Electricidad', 'Protección Térmica', 'Automatización', 'Bombas'],
-      link: '#', 
-      icon: 'mdi:pump'
-    },
-    {
-      id: 'guardia-electrica',
-      title: t.proyectos.p3Subtitulo || 'Guardia Eléctrica',
-      subtitle: t.proyectos.p3Descripcion || 'Mantenimiento Preventivo y Corrección de Emergencias',
-      description: t.proyectos.p3Texto || 'Servicio de respuesta rápida ante fallas eléctricas, detección de cortocircuitos, readecuación de tableros y monitoreo continuo de líneas.',
-      category: t.proyectos.p3Nombre || 'SERVICIOS TÉCNICOS',
-      tags: ['Mantenimiento', 'Tableros', 'Diagnóstico', 'Urgencias 24/7'],
-      link: '#', 
-      icon: 'mdi:shield-flash-outline'
-    },
-    {
-      id: 'inversor-tension',
-      title: t.proyectos.p4Subtitulo || 'Inversor de Tensión',
-      subtitle: t.proyectos.p4Descripcion || 'Sistema Backup de Alimentación Continuada',
-      description: t.proyectos.p4Texto || 'Implementación e integración de inversores de energía para respaldo en cortes de suministro, garantizando operación crítica sin interrupciones.',
-      category: t.proyectos.p4Nombre || 'ENERGÍA Y RESPALDO',
-      tags: ['Energía Solar', 'Inversores', 'Baterías', 'Suministro Crítico'],
-      link: '#', 
-      icon: 'mdi:lightning-bolt-outline'
-    },
-    {
-      id: 'tanque-plc-boyas',
-      title: t.proyectos.p5Subtitulo || 'Sistema de Tanque Automático con PLC y Boyas',
-      subtitle: t.proyectos.p5Descripcion || 'Control de Nivel y Automatización de Llenado',
-      description: t.proyectos.p5Texto || 'Lógica programada en PLC acoplada a boyas de nivel electromecánicas para la gestión automatizada y segura del llenado de tanques de reserva.',
-      category: t.proyectos.p5Nombre || 'AUTOMATIZACIÓN Y PLC',
-      tags: ['PLC', 'Lógica de Control', 'Sensores de Nivel', 'Automatización'],
-      link: '#', 
-      icon: 'mdi:water-boiler'
     },
   ]
 
@@ -79,9 +38,9 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-white tracking-tighter"
           >
-            {t.proyectos.titulo?.replace("Éxito.", "")}
+            {t.proyectos.titulo.replace("Éxito.", "")}
             <span className="text-[#0ea5e9]">
-              {t.proyectos.titulo?.includes("Éxito.") ? "Éxito." : ""}
+              {t.proyectos.titulo.includes("Éxito.") ? "Éxito." : ""}
             </span>
           </motion.h2>
         </div>
@@ -106,7 +65,7 @@ export default function Projects() {
                     <Icon icon={p.icon} className="text-2xl" />
                   </div>
                   <span className="text-[10px] font-black tracking-widest text-slate-500 uppercase">
-                    {p.category} 
+                    {t.proyectos.p1Nombre} 
                   </span>
                 </div>
 

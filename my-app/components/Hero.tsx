@@ -1,26 +1,98 @@
 'use client'
+import { useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/components/TranslateButton'
+import Typewriter from 'typewriter-effect'
+import Particles from '@tsparticles/react'
+import { loadSlim } from '@tsparticles/slim'
+import type { Engine } from '@tsparticles/engine'
 
 export default function Hero() {
   const { t } = useLanguage();
 
+  const stringsEfecto = Array.isArray(t.hero.tagline) ? t.hero.tagline : [t.hero.tagline];
+
+  // Inicialización liviana de tsParticles
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadSlim(engine);
+  }, []);
+
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-[#020617] relative"> 
+    <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-[#020617] relative overflow-hidden"> 
       
-      {/* Cambiado a animate e initial directo para que cargue fluido de entrada */}
+      {/* FONDO ANIMADO CON PARTICULAS */}
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        className="absolute inset-0 z-0"
+        options={{
+          fullScreen: { enable: false },
+          fpsLimit: 60,
+          interactivity: {
+            events: {
+              onHover: {
+                enable: true,
+                mode: 'grab', // Conecta partículas al pasar el cursor
+              },
+            },
+            modes: {
+              grab: {
+                distance: 140,
+                links: { opacity: 0.5 },
+              },
+            },
+          },
+          particles: {
+            color: { value: '#10b981' }, // Color verde esmeralda a juego con tu UI
+            links: {
+              color: '#0ea5e9', // Líneas azul cyan
+              distance: 150,
+              enable: true,
+              opacity: 0.15,
+              width: 1,
+            },
+            move: {
+              enable: true,
+              speed: 1.2,
+              direction: 'none',
+              outModes: { default: 'bounce' },
+            },
+            number: {
+              density: { enable: true, width: 800, height: 800 },
+              value: 65,
+            },
+            opacity: { value: 0.3 },
+            shape: { type: 'circle' },
+            size: { value: { min: 1, max: 3 } },
+          },
+          detectRetina: true,
+        }}
+      />
+
+      {/* GLOW / RESPLANDOR GRADIENTE DE FONDO (Para dar profundidad) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-[#10b981]/15 to-[#0ea5e9]/15 blur-[120px] rounded-full pointer-events-none z-0" />
+
+      {/* CONTENIDO PRINCIPAL */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-w-4xl my-auto" // Usa my-auto para empujar el contenido al centro de forma limpia
+        className="max-w-4xl my-auto z-10 relative"
       >
         <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
           <span className="block text-white">
             Xidmet Company
           </span>
-          <span className="block bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#0ea5e9] bg-clip-text text-transparent py-1">
-             {t.hero.tagline}
+          <span className="inline-block bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#0ea5e9] bg-clip-text text-transparent py-1">
+             <Typewriter
+               options={{
+                 strings: stringsEfecto,
+                 autoStart: true,
+                 loop: true,
+                 delay: 60,
+                 deleteSpeed: 40,
+               }}
+             />
           </span>
         </h1>
 
@@ -32,7 +104,7 @@ export default function Hero() {
           <a
             href="#servicios"
             className="bg-[#10b981] text-[#020617] px-8 py-4 rounded-full font-bold
-                       hover:bg-[#34d399] hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all"
+                       hover:bg-[#34d399] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transition-all"
           >
             {t.hero.btnSoluciones}
           </a>
@@ -40,15 +112,15 @@ export default function Hero() {
           <a
             href="#contacto"
             className="border-2 border-slate-700 text-white px-8 py-4 rounded-full font-bold
-                       hover:bg-slate-800 transition-all"
+                       hover:bg-slate-800/80 hover:border-slate-500 transition-all backdrop-blur-sm"
           >
             {t.hero.btnContacto}
           </a>
         </div>
       </motion.div>
 
-      {/* INDICADOR DE SCROLL: Rompe el espacio vacío negro del fondo y avisa que hay más abajo */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 animate-bounce hidden md:block">
+      {/* INDICADOR DE SCROLL */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 animate-bounce hidden md:block z-10">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
