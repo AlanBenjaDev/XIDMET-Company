@@ -73,7 +73,7 @@ export default function Projects() {
       link: '#', 
       icon: 'mdi:water-boiler',
       images: [
-        'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766651/tanque_plc_boyas_zjvq9r.jpg',
+        'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766646/plc_ibhkhu.jpg',
       ]
     },
   ]
