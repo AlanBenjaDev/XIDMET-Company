@@ -108,9 +108,16 @@ const INITIAL_TASKS: Task[] = [
     endDate: "2026-09-10", 
     status: "Completed" 
   },
-  
-   { 
+  { 
     id: "12", 
+    name: "Final Informe de Inversor de tensión", 
+    assignee: "Federico Sanchez", 
+    startDate: "2026-10-09", 
+    endDate: "2026-09-10", 
+    status: "Completed" 
+  },
+   { 
+    id: "13", 
     name: "Final Informe de Metodo Lumen", 
     assignee: "Federico Sanchez", 
     startDate: "2026-10-09", 
@@ -118,7 +125,7 @@ const INITIAL_TASKS: Task[] = [
     status: "Completed" 
   },
     { 
-    id: "13", 
+    id: "14", 
     name: "Diseñar Diagrama de gant dinamico en la pagina Web", 
     assignee: "Alan Andrada", 
     startDate: "2026-14-09", 
