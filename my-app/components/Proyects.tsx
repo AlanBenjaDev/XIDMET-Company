@@ -64,18 +64,18 @@ export default function Projects() {
       ]
     },
     {
-      id: 'tanque-plc-boyas',
-      title: t.proyectos.p5Subtitulo || 'Sistema de Tanque Automático con PLC y Boyas',
-      subtitle: t.proyectos.p5Descripcion || 'Control de Nivel y Automatización de Llenado',
-      description: t.proyectos.p5Texto || 'Lógica programada en PLC acoplada a boyas de nivel electromecánicas para la gestión automatizada y segura del llenado de tanques de reserva.',
-      category: t.proyectos.p5Nombre || 'AUTOMATIZACIÓN Y PLC',
-      tags: ['PLC', 'Lógica de Control', 'Sensores de Nivel', 'Automatización'],
-      link: '#', 
-      icon: 'mdi:water-boiler',
-      images: [
-        'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766646/plc_ibhkhu.jpg',
-      ]
-    },
+  id: 'tanque-plc-boyas',
+  title: t.proyectos.p5Subtitulo || 'Manejo de Automatizaciones Industriales',
+  subtitle: t.proyectos.p5Descripcion || 'Control de procesos y lógica programada en PLC',
+  description: t.proyectos.p5Texto || 'Programación de lógica de control en PLC para automatización de bombas, sensores de nivel y sistemas de seguridad en procesos industriales.',
+  category: t.proyectos.p5Nombre || 'AUTOMATIZACIÓN Y PLC',
+  tags: ['PLC', 'Automatización Industrial', 'Lógica de Control', 'Sensores'],
+  link: '#', 
+  icon: 'mdi:water-boiler',
+  images: [
+    'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766646/plc_ibhkhu.jpg',
+  ]
+}
   ]
 
   return (
