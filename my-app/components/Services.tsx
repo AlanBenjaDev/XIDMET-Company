@@ -11,34 +11,44 @@ export default function Services() {
     {
       title: t.servicios.s1Titulo, // "Seguridad Inteligente"
       icon: 'mdi:cctv',
-      parr: t.servicios.s1Texto,
+      parr: isEn
+        ? 'Installation of IP cameras, smart alarm panels, infrared motion detectors, and remote monitoring with instant mobile alerts.'
+        : 'Instalación de cámaras IP, centrales de alarma, detectores infrarrojos de movimiento y monitoreo remoto con alertas instantáneas al celular.',
     },
     {
       title: t.servicios.s2Titulo, // "Domótica Residencial"
       icon: 'mdi:home-automation',
-      parr: t.servicios.s2Texto,
+      parr: isEn
+        ? 'Comprehensive home automation: motorized curtains, climate control, and custom everyday scenes managed locally or from your phone.'
+        : 'Automatización integral del hogar: control de cortinas, climatización y escenas cotidianas personalizadas con mando local o desde el celular.',
     },
     {
       title: t.servicios.s3Titulo, // "Iluminación Automatizada"
       icon: 'mdi:lightbulb-auto-outline',
-      parr: t.servicios.s3Texto,
+      parr: isEn
+        ? 'Efficient management of indoor and outdoor lighting with scheduled routines, dimmers, and energy-saving automation.'
+        : 'Gestión eficiente de luces interiores y exteriores mediante horarios programados, dimerización y encendido automático para ahorro energético.',
     },
     {
       title: t.servicios.s4Titulo, // "Accesos Automatizados"
       icon: 'mdi:gate',
-      parr: t.servicios.s4Texto,
+      parr: isEn
+        ? 'Automation of sliding/swing gates and electronic locks operated via mobile app, RFID tag, remote control, or numeric keypad.'
+        : 'Automatización de portones y cerraduras electrónicas con apertura mediante celular, tag, control remoto o teclado numérico.',
     },
     {
       title: t.servicios.s5Titulo, // "Control Industrial & Eléctrico"
       icon: 'mdi:factory',
-      parr: t.servicios.s5Texto,
+      parr: isEn
+        ? 'Smart electrical panels, PLC logic, level sensors, and process automation for workshops and businesses seeking operational reliability.'
+        : 'Tableros eléctricos inteligentes, lógica con PLC, sensores de nivel y automatización de procesos para talleres y empresas.',
     },
     {
-      title: isEn ? 'Alarms & Motion Sensors' : 'Alarmas y Sensores de Movimiento',
-      icon: 'mdi:alarm-light-outline',
+      title: isEn ? 'Electrical Installations' : 'Instalaciones Eléctricas',
+      icon: 'mdi:flash-outline',
       parr: isEn
-        ? 'Installation of smart alarm panels, infrared motion detectors, smoke sensors, and instant mobile alerts for perimeter protection.'
-        : 'Instalación de centrales de alarma, detectores infrarrojos de movimiento, sensores de humo y alertas instantáneas al celular para protección perimetral.',
+        ? 'Design, execution, and certification of residential and commercial electrical systems, DIN panels, and grounding under AEA 90364.'
+        : 'Diseño, montaje y certificación de instalaciones eléctricas domiciliarias y comerciales, tableros DIN y puesta a tierra bajo normativa AEA 90364.',
     },
   ]
 

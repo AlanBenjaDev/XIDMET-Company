@@ -1,67 +1,81 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
-
 import { useLanguage } from '@/components/TranslateButton'
 
 export default function Equipo() {
-  const { t } = useLanguage();
+  const { t, idioma } = useLanguage()
+  const isEn = idioma === 'en'
 
   const integrantes = [
     {
       nombre: 'Alan Andrada',
-      rol: t.equipo.rolAlan,
+      rol: t.equipo.rolAlan, // "DIRECTOR IT & CEO"
+      especialidad: isEn
+        ? 'IoT Architecture / Programming & Direction'
+        : 'Arquitectura IoT / Programación & Dirección',
+      cvUrl: '/cv/CV-Alan-Andrada.pdf',
       icon: 'mdi:shield-crown-outline',
-      highlight: true
-    },
-    {
-      nombre: 'Mia Rodriguez',
-      rol: t.equipo.rolMia, 
-      icon: 'mdi:palette-outline',
-      highlight: false
+      highlight: true,
     },
     {
       nombre: 'Federico Sanchez',
-      rol: t.equipo.rolFederico, 
+      rol: t.equipo.rolFederico, // "GESTIÓN DE COSTOS"
+      especialidad: isEn ? 'Budgets & Cost Analysis' : 'Cómputo & Presupuestos',
+      cvUrl: '/cv/CV-Federico-Sanchez.pdf',
       icon: 'mdi:finance',
-      highlight: false
-    },
-    {
-      nombre: 'Joaquin Ferreyra',
-      rol: t.equipo.rolJoaquin, 
-      icon: 'mdi:check-decagram-outline',
-      highlight: false
+      highlight: false,
     },
     {
       nombre: 'Ignacio Gonzales',
-      rol: t.equipo.rolIgnacio, 
+      rol: t.equipo.rolIgnacio, // "TÉCNICO ESPECIALISTA"
+      especialidad: isEn ? 'Electrical & CCTV Assembly' : 'Montaje Eléctrico & CCTV',
+      cvUrl: '/cv/CV-Ignacio-Gonzales.pdf',
       icon: 'mdi:tools',
-      highlight: false
+      highlight: false,
+    },
+    {
+      nombre: 'Mia Rodriguez',
+      rol: t.equipo.rolMia, // "LÍDER DE DISEÑO VISUAL"
+      especialidad: isEn ? 'UI/UX & Visual Identity' : 'Diseño UI/UX & Identidad',
+      cvUrl: '/cv/CV-Mia-Rodriguez.pdf',
+      icon: 'mdi:palette-outline',
+      highlight: false,
+    },
+    {
+      nombre: 'Joaquin Ferreyra',
+      rol: t.equipo.rolJoaquin, // "PRUEBAS DE CALIDAD (QA)"
+      especialidad: isEn ? 'Testing & AEA Compliance' : 'Ensayos & Normativa AEA',
+      cvUrl: '/cv/CV-Joaquin-Ferreyra.pdf',
+      icon: 'mdi:check-decagram-outline',
+      highlight: false,
     },
     {
       nombre: 'Maximo Ceballos',
-      rol: t.equipo.rolMaximo, 
+      rol: t.equipo.rolMaximo, // "TÉCNICO ESPECIALISTA"
+      especialidad: isEn ? 'Automation & Gate Motors' : 'Automatización & Portones',
+      cvUrl: '/cv/CV-Maximo-Ceballos.pdf',
       icon: 'mdi:cogs',
-      highlight: false
-    }
+      highlight: false,
+    },
   ]
 
   return (
     <section id="equipo" className="py-24 bg-[#020617] relative overflow-hidden">
-  
       <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#10b981]/5 blur-[120px] rounded-full" />
-      
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="text-[#10b981] text-[10px] font-black tracking-[0.5em] uppercase"
           >
-            {t.equipo.subtitulo} {/* "Capital Humano" / "Human Capital" */}
+            {t.equipo.subtitulo}
           </motion.span>
           <h2 className="text-3xl md:text-5xl text-white font-black tracking-tighter mt-4 uppercase">
-            {t.equipo.titulo.split(" ")[0]} <span className="text-[#10b981]">{t.equipo.titulo.split(" ")[1] || "EQUIPO"}</span>
+            {t.equipo.titulo.split(' ')[0]}{' '}
+            <span className="text-[#10b981]">{t.equipo.titulo.split(' ')[1] || 'EQUIPO'}</span>
           </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-[#10b981] to-transparent mx-auto mt-6" />
         </div>
@@ -74,30 +88,47 @@ export default function Equipo() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`group p-8 rounded-[2rem] border transition-all duration-500 ${
-                persona.highlight 
-                  ? 'bg-[#10b981]/5 border-[#10b981]/30 shadow-[0_0_30px_rgba(16,185,129,0.05)]' 
+              className={`group p-8 rounded-[2rem] border transition-all duration-500 flex flex-col justify-between ${
+                persona.highlight
+                  ? 'bg-[#10b981]/5 border-[#10b981]/30 shadow-[0_0_30px_rgba(16,185,129,0.05)]'
                   : 'bg-[#0f172a]/40 border-white/5 hover:border-[#10b981]/20'
               }`}
             >
-              <div className="flex items-start justify-between mb-6">
-                <div className={`p-3 rounded-2xl ${persona.highlight ? 'bg-[#10b981] text-[#020617]' : 'bg-slate-800 text-[#10b981]'}`}>
-                  <Icon icon={persona.icon} className="text-2xl" />
+              <div>
+                <div className="flex items-start justify-between mb-6">
+                  <div
+                    className={`p-3 rounded-2xl ${
+                      persona.highlight ? 'bg-[#10b981] text-[#020617]' : 'bg-slate-800 text-[#10b981]'
+                    }`}
+                  >
+                    <Icon icon={persona.icon} className="text-2xl" />
+                  </div>
+                  <div className="text-[9px] font-bold text-slate-500 tracking-widest uppercase">
+                    ID: 00{index + 1}
+                  </div>
                 </div>
-                <div className="text-[9px] font-bold text-slate-500 tracking-widest uppercase">
-                  ID: 00{index + 1}
-                </div>
+
+                <h3 className="text-xl font-black text-white tracking-tight mb-1 group-hover:text-[#10b981] transition-colors">
+                  {persona.nombre}
+                </h3>
+                <p className="text-[#10b981] text-[10px] font-bold tracking-[0.2em] uppercase mb-2 opacity-85">
+                  {persona.rol}
+                </p>
+                <p className="text-slate-400 text-xs mb-6">{persona.especialidad}</p>
               </div>
 
-              <h3 className="text-xl font-black text-white tracking-tight mb-1 group-hover:text-[#10b981] transition-colors">
-                {persona.nombre}
-              </h3>
-              <p className="text-[#10b981] text-[10px] font-bold tracking-[0.2em] uppercase mb-6 opacity-80">
-                {persona.rol}
-              </p>
+              <div>
+                <div className="w-full h-[1px] bg-white/5 group-hover:bg-[#10b981]/20 transition-colors mb-5" />
 
-              <div className="flex gap-2">
-                <div className="w-full h-[1px] bg-white/5 group-hover:bg-[#10b981]/20 transition-colors" />
+                <a
+                  href={persona.cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 px-4 rounded-xl bg-slate-900/90 hover:bg-[#10b981] text-slate-300 hover:text-[#020617] border border-white/10 hover:border-[#10b981] text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <Icon icon="mdi:file-account-outline" className="text-base" />
+                  <span>{isEn ? 'View Curriculum (CV)' : 'Ver Currículum'}</span>
+                </a>
               </div>
             </motion.div>
           ))}
