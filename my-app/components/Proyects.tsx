@@ -64,18 +64,33 @@ export default function Projects() {
       ]
     },
     {
-  id: 'tanque-plc-boyas',
-  title: t.proyectos.p5Subtitulo || 'Manejo de Automatizaciones Industriales',
-  subtitle: t.proyectos.p5Descripcion || 'Control de procesos y lógica programada en PLC',
-  description: t.proyectos.p5Texto || 'Programación de lógica de control en PLC para automatización de bombas, sensores de nivel y sistemas de seguridad en procesos industriales.',
-  category: t.proyectos.p5Nombre || 'AUTOMATIZACIÓN Y PLC',
-  tags: ['PLC', 'Automatización Industrial', 'Lógica de Control', 'Sensores'],
-  link: '#', 
-  icon: 'mdi:water-boiler',
-  images: [
-    'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766646/plc_ibhkhu.jpg',
-  ]
-}
+      id: 'tanque-plc-boyas',
+      title: t.proyectos.p5Subtitulo || 'Manejo de Automatizaciones Industriales',
+      subtitle: t.proyectos.p5Descripcion || 'Control de procesos y lógica programada en PLC',
+      description: t.proyectos.p5Texto || 'Programación de lógica de control en PLC para automatización de bombas, sensores de nivel y sistemas de seguridad en procesos industriales.',
+      category: t.proyectos.p5Nombre || 'AUTOMATIZACIÓN Y PLC',
+      tags: ['PLC', 'Automatización Industrial', 'Lógica de Control', 'Sensores'],
+      link: '#', 
+      icon: 'mdi:water-boiler',
+      images: [
+        'https://res.cloudinary.com/dfx3io0iv/image/upload/v1787766646/plc_ibhkhu.jpg',
+      ]
+    },
+    {
+      id: 'instalacion-domotica',
+      title: t.proyectos.p6Subtitulo || 'Instalación Electrica y Domotica domiciliaria',
+      subtitle: t.proyectos.p6Descripcion || 'Ingeniería de Instalación, Planos, Plan de Trabajo y Presupuesto',
+      description: t.proyectos.p6Texto || 'Diseño y ejecución integral de instalación eléctrica reglamentaria según norma AEA 90364, plano unifilar y de planta, tablero general y seccional, y arquitectura domótica inteligente para residencia.',
+      category: t.proyectos.p6Nombre || 'INSTALACIÓN RESIDENCIAL & IOT',
+      tags: ['Plano Eléctrico', 'Domótica IoT', 'Norma AEA 90364', 'Tableros DIN', 'Presupuesto', 'Plan de Trabajo'],
+      link: '/proyectos/instalacion-domotica', 
+      icon: 'mdi:home-lightning-bolt-outline',
+      images: [
+        'https://images.unsplash.com/photo-1558441719-7f7229d107a6?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
+      ]
+    }
   ]
 
   return (
@@ -171,16 +186,20 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* BOTÓN SOLO PARA SITAE */}
-                {p.id === 'sitae' && p.link !== '#' && (
+                {/* BOTÓN DE ACCIÓN / ENLACE AL PROYECTO */}
+                {p.link && p.link !== '#' && (
                   <a 
                     href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#10b981] font-bold text-xs uppercase tracking-widest group/btn w-fit"
+                    target={p.link.startsWith('http') ? "_blank" : undefined}
+                    rel={p.link.startsWith('http') ? "noopener noreferrer" : undefined}
+                    className="inline-flex items-center gap-2 text-[#10b981] font-bold text-xs uppercase tracking-widest group/btn w-fit mt-2 hover:text-[#34d399] transition-colors"
                   >
-                    {t.proyectos.btnExplorar}
-                    <Icon icon="mdi:arrow-right" className="group-hover/btn:translate-x-2 transition-transform" />
+                    <span>
+                      {p.id === 'instalacion-domotica'
+                        ? (t.proyectos.btnVerDetalles || "Ver Plano, Plan y Presupuesto")
+                        : t.proyectos.btnExplorar}
+                    </span>
+                    <Icon icon="mdi:arrow-right" className="group-hover/btn:translate-x-2 transition-transform text-base" />
                   </a>
                 )}
               </div>

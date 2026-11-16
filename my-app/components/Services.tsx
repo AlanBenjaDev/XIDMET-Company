@@ -1,63 +1,62 @@
 'use client'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-
-// 1. Importamos el hook de idioma
 import { useLanguage } from '@/components/TranslateButton'
 
 export default function Services() {
-  // 2. Extraemos las traducciones dinámicas
-  const { t } = useLanguage();
+  const { t, idioma } = useLanguage()
+  const isEn = idioma === 'en'
 
-  // Estructura de servicios sincronizada dinámicamente con tu diccionario
   const services = [
     {
       title: t.servicios.s1Titulo, // "Seguridad Inteligente"
-      icon: 'mdi:cctv', 
-      parr: t.servicios.s1Texto // "Instalación de cámaras IP y sistemas de monitoreo..."
+      icon: 'mdi:cctv',
+      parr: t.servicios.s1Texto,
     },
     {
       title: t.servicios.s2Titulo, // "Domótica Residencial"
       icon: 'mdi:home-automation',
-      parr: t.servicios.s2Texto // "Automatización completa de tu hogar..."
+      parr: t.servicios.s2Texto,
     },
     {
       title: t.servicios.s3Titulo, // "Iluminación Automatizada"
       icon: 'mdi:lightbulb-auto-outline',
-      parr: t.servicios.s3Texto // "Gestión eficiente de luces interiores y exteriores..."
+      parr: t.servicios.s3Texto,
     },
     {
       title: t.servicios.s4Titulo, // "Accesos Automatizados"
       icon: 'mdi:gate',
-      parr: t.servicios.s4Texto // "Automatización de portones y cerraduras electrónicas..."
+      parr: t.servicios.s4Texto,
     },
     {
       title: t.servicios.s5Titulo, // "Control Industrial & Eléctrico"
       icon: 'mdi:factory',
-      parr: t.servicios.s5Texto // "Tableros eléctricos inteligentes y automatización de procesos..."
+      parr: t.servicios.s5Texto,
+    },
+    {
+      title: isEn ? 'Alarms & Motion Sensors' : 'Alarmas y Sensores de Movimiento',
+      icon: 'mdi:alarm-light-outline',
+      parr: isEn
+        ? 'Installation of smart alarm panels, infrared motion detectors, smoke sensors, and instant mobile alerts for perimeter protection.'
+        : 'Instalación de centrales de alarma, detectores infrarrojos de movimiento, sensores de humo y alertas instantáneas al celular para protección perimetral.',
     },
   ]
 
   return (
-    /* SECCIÓN DE FONDO: Ocupa todo el ancho sin restricciones */
     <section id="servicios" className="w-full py-24 bg-[#020617] border-t border-white/5">
-      
-      {/* CONTENEDOR INTERNO: Este es el que centra y limita el contenido */}
       <div className="max-w-7xl mx-auto px-6">
-        
         <div className="flex flex-col items-center mb-16">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="text-[#10b981] text-xs font-bold tracking-[0.3em] uppercase mb-2"
           >
-            {t.servicios.subtitulo} {/* "Especialidades" */}
+            {t.servicios.subtitulo}
           </motion.span>
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white tracking-tighter">
-            {/* Manipulación simple de strings para asegurar que el punto final o color resalte bien en inglés y español */}
-            {t.servicios.titulo.includes("Nuestras") ? "Nuestras " : "Our "}
+            {t.servicios.titulo.includes('Nuestras') ? 'Nuestras ' : 'Our '}
             <span className="text-[#10b981]">
-              {t.servicios.titulo.replace("Nuestras ", "").replace("Our ", "")}
+              {t.servicios.titulo.replace('Nuestras ', '').replace('Our ', '')}
             </span>
           </h2>
         </div>
@@ -78,33 +77,17 @@ export default function Services() {
                 <div className="w-14 h-14 rounded-lg bg-[#020617] border border-white/10 flex items-center justify-center mb-6 group-hover:border-[#10b981]/50 transition-colors">
                   <Icon icon={s.icon} className="text-3xl text-[#10b981]" />
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#34d399] transition-colors">
                   {s.title}
                 </h3>
-                
+
                 <p className="text-sm leading-relaxed text-slate-400 group-hover:text-slate-200 transition-colors">
                   {s.parr}
                 </p>
               </div>
             </motion.div>
           ))}
-
-          {/* Tarjeta estática final: Desafío a medida */}
-          <motion.div
-            className="group border-2 border-dashed border-[#1e293b] rounded-2xl p-8 flex flex-col items-center justify-center text-center opacity-60 hover:opacity-100 transition-all hover:border-[#10b981]/50"
-          >
-            <Icon icon="mdi:tools" className="text-3xl text-[#10b981] mb-4" />
-            <p className="text-[#10b981] font-bold uppercase tracking-widest text-xs">
-              {t.servicios.s6Titulo} {/* "Desafío a medida" */}
-            </p>
-            <h3 className="text-white font-semibold mt-2">
-              {t.servicios.s6Texto.split("? ")[0] + "?"} {/* "¿Necesitás una solución específica?" */}
-            </h3>
-            <p className="text-xs text-slate-500 mt-2">
-              {t.servicios.s6Texto.split("? ")[1] || t.servicios.s6Texto} {/* "Personalizamos cada componente de tu sistema." */}
-            </p>
-          </motion.div>
         </div>
       </div>
     </section>

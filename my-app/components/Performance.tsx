@@ -3,38 +3,36 @@ import { motion } from 'framer-motion'
 import { useLanguage } from '@/components/TranslateButton'
 
 export default function Performance() {
-  const { t, idioma } = useLanguage();
+  const { t, idioma } = useLanguage()
+  const isEn = idioma === 'en'
 
   const standards = [
-    { 
-      label: t.performance.kpi1Titulo, 
-      value: '99.9%', 
-      desc: t.performance.kpi1Texto 
+    {
+      value: '100%',
+      label: isEn ? 'AEA 90364 COMPLIANCE' : 'NORMATIVA AEA 90364',
+      desc: isEn
+        ? 'Installations designed, tested, and certified under current electrical safety standards and Law 10.281.'
+        : 'Instalaciones ejecutadas, medidas con instrumental y certificadas bajo reglamento eléctrico vigente y Ley 10.281.',
     },
-    { 
-      label: t.performance.kpi2Titulo, 
-      value: '< 1s', 
-      desc: t.performance.kpi2Texto 
+    {
+      value: '24/7',
+      label: isEn ? 'LOCAL CONTROL & MONITORING' : 'OPERACIÓN LOCAL Y MONITOREO',
+      desc: isEn
+        ? 'Physical switches and local security continue operating seamlessly even if your internet connection drops.'
+        : 'Las llaves físicas, protecciones y alarmas siguen operando de forma local aunque se corte el servicio de internet.',
     },
-    { 
-      label: t.performance.kpi3Titulo, 
-      value: '-35%', 
-      desc: t.performance.kpi3Texto 
+    {
+      value: isEn ? '12 Months' : '12 Meses',
+      label: isEn ? 'WRITTEN TECHNICAL WARRANTY' : 'GARANTÍA TÉCNICA ESCRITA',
+      desc: isEn
+        ? 'Direct post-installation support, grounding verification, and preventive maintenance on every project.'
+        : 'Soporte técnico directo, protocolo de puesta a tierra y respaldo post-instalación en cada obra entregada.',
     },
   ]
 
-  // Lógica limpia de separación según el idioma activo
-  const separador = idioma === 'en' ? ' for ' : ' para ';
-  const partesTitulo = t.performance.titulo.split(separador);
-  
-  const primeraParte = partesTitulo[0];
-  // Si por alguna razón el split falla, usamos por defecto la segunda mitad original
-  const segundaParte = partesTitulo[1] || (idioma === 'en' ? 'total control without failures.' : 'un control total sin fallas.');
-
   return (
-    <section id="resultados" className="py-24 bg-[#020617] text-white overflow-hidden">
+    <section id="rendimiento" className="py-24 bg-[#020617] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        
         <div className="mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -47,14 +45,14 @@ export default function Performance() {
             <div className="h-[1px] w-12 bg-[#10b981]/50" />
           </motion.div>
 
-          <motion.h2 
+          <motion.h2
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             className="text-3xl md:text-5xl font-light mt-4 tracking-tight leading-tight"
           >
-            {primeraParte} {separador} <br /> 
+            {isEn ? 'Precision engineering for' : 'Ingeniería de precisión para'} <br />
             <span className="font-bold text-[#34d399]">
-              {segundaParte}
+              {isEn ? 'a safe and efficient installation.' : 'una instalación segura y eficiente.'}
             </span>
           </motion.h2>
         </div>
@@ -70,7 +68,7 @@ export default function Performance() {
               className="group p-8 rounded-2xl bg-gradient-to-br from-[#0f172a] to-transparent border border-[#1e293b] hover:border-[#10b981]/50 transition-all relative overflow-hidden"
             >
               <div className="absolute -right-4 -top-4 w-24 h-24 bg-[#10b981]/5 blur-3xl group-hover:bg-[#10b981]/15 transition-all" />
-              
+
               <h3 className="text-4xl md:text-5xl font-black text-[#10b981] mb-2 tracking-tighter">
                 {stat.value}
               </h3>
@@ -82,10 +80,10 @@ export default function Performance() {
               </p>
 
               <div className="mt-6 h-[2px] w-full bg-white/5 overflow-hidden">
-                <motion.div 
+                <motion.div
                   initial={{ x: '-100%' }}
                   whileInView={{ x: '0%' }}
-                  transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
+                  transition={{ duration: 1.5, ease: 'easeOut', delay: 0.5 }}
                   className="h-full bg-gradient-to-r from-[#10b981] to-[#0ea5e9]"
                 />
               </div>
@@ -93,7 +91,7 @@ export default function Performance() {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="mt-16 flex flex-col md:flex-row items-center justify-between border-t border-[#1e293b] pt-8 gap-4"
@@ -101,7 +99,7 @@ export default function Performance() {
           <p className="text-slate-500 text-[10px] tracking-[0.2em] uppercase text-center md:text-left">
             {t.performance.notaFooter}
           </p>
-          
+
           <div className="px-4 py-2 bg-[#10b981]/10 rounded-full border border-[#10b981]/20 flex items-center gap-2">
             <div className="w-2 h-2 bg-[#10b981] animate-pulse rounded-full" />
             <span className="text-[10px] text-[#10b981] uppercase tracking-widest font-bold">

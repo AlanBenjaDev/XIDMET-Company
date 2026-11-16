@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 // =========================================================================
 // 1. DICCIONARIO GLOBAL CON TODO EL COPY DE XIDMET COMPANY
@@ -16,7 +16,7 @@ export const diccionario = {
     },
     hero: {
       tagline: "Tu entorno, inteligente y seguro.",
-      descripcion: "Expertos en automatización electrónica, eléctrica y seguridad integral. Sistemas de alta calidad, simples de usar y diseñados para crecer con vos.",
+      descripcion: "Expertos en automatización electrónica, eléctrica y seguridad integral. Sistemas de grado industrial, simples de usar y diseñados para crecer con vos.",
       btnSoluciones: "Nuestras Soluciones",
       btnContacto: "Contactar a un técnico",
       boton: "Soporte Técnico"
@@ -26,9 +26,9 @@ export const diccionario = {
       titulo: "Soluciones inteligentes para desafíos reales",
       descripcion: "En Xidmet Company transformamos espacios comunes en lugares inteligentes. Conectamos tecnología avanzada, cámaras de seguridad y sistemas eléctricos de forma simple y eficiente.",
       misionTitulo: "Misión",
-      misionTexto: '"Automatizamos y aseguramos espacios con calidad highly robusta."',
+      misionTexto: '"Automatizamos y aseguramos espacios bajo estándares de ingeniería eléctrica y electrónica de grado industrial."',
       visionTitulo: "Visión",
-      visionTexto: '"Ser los líderes en la automatización de espacios y sistemas de control con tecnología de alta calidad."',
+      visionTexto: '"Ser referentes en automatización de espacios y sistemas de control mediante tecnología confiable y precisa."',
       metasTitulo: "Metas Estratégicas",
       meta1Titulo: "Alcance",
       meta1Texto: "Instalar nuestros sistemas en gran parte de la provincia.",
@@ -96,7 +96,14 @@ export const diccionario = {
       p5Nombre: "AUTOMATIZACIÓN Y PLC",
       p5Subtitulo: "Sistema de Tanque Automático con PLC y Boyas",
       p5Descripcion: "Control de Nivel y Automatización de Llenado",
-      p5Texto: "Lógica programada en PLC acoplada a boyas de nivel electromecánicas para la gestión automatizada y segura del llenado de tanques de reserva."
+      p5Texto: "Lógica programada en PLC acoplada a boyas de nivel electromecánicas para la gestión automatizada y segura del llenado de tanques de reserva.",
+      
+      // Proyecto 6
+      p6Nombre: "INSTALACIÓN RESIDENCIAL & IOT",
+      p6Subtitulo: "Instalación Eléctrica y Domótica Domiciliaria",
+      p6Descripcion: "Ingeniería de Instalación, Planos, Plan de Trabajo y Presupuesto",
+      p6Texto: "Diseño y ejecución integral de instalación eléctrica según norma AEA 90364, plano unifilar y de planta, tablero general y seccional, y arquitectura domótica inteligente para residencia.",
+      btnVerDetalles: "Ver Plano, Plan y Presupuesto"
     },
     performance: {
       titulo: "Ingeniería de precisión para un control total sin fallas.",
@@ -106,7 +113,7 @@ export const diccionario = {
       kpi2Texto: "Latencia mínima en el control de dispositivos desde tu smartphone o panel local.",
       kpi3Titulo: "Eficiencia Energética",
       kpi3Texto: "Reducción promedio en el consumo eléctrico mediante gestión inteligente de iluminación.",
-      notaFooter: "* Valores técnicos basados en protocolos de seguridad y hardware de grado industrial."
+      notaFooter: "Valores técnicos basados en protocolos de seguridad y hardware de grado industrial."
     },
     cta: {
       subtitulo: "Monitoreo Activo",
@@ -139,7 +146,7 @@ export const diccionario = {
     },
     hero: {
       tagline: "Your environment, smart and secure.",
-      descripcion: "Experts in electronic, electrical automation, and comprehensive security. High-quality systems, simple to use, and designed to grow with you.",
+      descripcion: "Experts in electronic, electrical automation, and comprehensive security. Industrial-grade systems, simple to use, and designed to grow with you.",
       btnSoluciones: "Our Solutions",
       btnContacto: "Contact a technician",
       boton: "Technical Support"
@@ -149,9 +156,9 @@ export const diccionario = {
       titulo: "Smart solutions for real challenges",
       descripcion: "At Xidmet Company, we turn common spaces into smart environments. We connect advanced technology, security cameras, and electrical systems in a simple and efficient way.",
       misionTitulo: "Mission",
-      misionTexto: '"We automate and secure spaces with highly robust quality."',
+      misionTexto: '"We automate and secure spaces under industrial-grade electrical and electronic engineering standards."',
       visionTitulo: "Vision",
-      visionTexto: '"To be the leaders in the automation of spaces and control systems with high-quality technology."',
+      visionTexto: '"To be leaders in space automation and control systems through reliable and precise technology."',
       metasTitulo: "Strategic Goals",
       meta1Titulo: "Reach",
       meta1Texto: "Install our systems across a large part of the province.",
@@ -219,7 +226,14 @@ export const diccionario = {
       p5Nombre: "AUTOMATION & PLC",
       p5Subtitulo: "Automatic Tank System with PLC and Floats",
       p5Descripcion: "Level Control and Automated Filling",
-      p5Texto: "Programmed PLC logic combined with electromechanical level floats for automated, secure management of water storage tanks."
+      p5Texto: "Programmed PLC logic combined with electromechanical level floats for automated, secure management of water storage tanks.",
+      
+      // Project 6
+      p6Nombre: "RESIDENTIAL & IOT INSTALLATION",
+      p6Subtitulo: "Residential Electrical Installation & Home Automation",
+      p6Descripcion: "Installation Engineering, Blueprints, Work Plan & Budget",
+      p6Texto: "Comprehensive design and execution of electrical installation per AEA 90364 standard, floor plan and unifilar blueprint, main/sub panels, and smart domotic architecture for residential home.",
+      btnVerDetalles: "View Blueprints, Plan & Budget"
     },
     performance: {
       titulo: "Precision engineering for total control without failures.",
@@ -229,7 +243,7 @@ export const diccionario = {
       kpi2Texto: "Minimal latency in device control from your smartphone or local panel.",
       kpi3Titulo: "Energy Efficiency",
       kpi3Texto: "Average reduction in power consumption through intelligent lighting management.",
-      notaFooter: "* Technical values based on security protocols and industrial-grade hardware."
+      notaFooter: "Technical values based on security protocols and industrial-grade hardware."
     },
     cta: {
       subtitulo: "Active Monitoring",
@@ -268,16 +282,19 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [idioma, setIdiomaLocal] = useState<Idioma>("es");
-
-  useEffect(() => {
-    const savedLang = localStorage.getItem("xidmet_lang") as Idioma;
-    if (savedLang) setIdiomaLocal(savedLang);
-  }, []);
+  const [idioma, setIdiomaLocal] = useState<Idioma>(() => {
+    if (typeof window !== "undefined") {
+      const savedLang = localStorage.getItem("xidmet_lang") as Idioma;
+      if (savedLang === "es" || savedLang === "en") return savedLang;
+    }
+    return "es";
+  });
 
   const setIdioma = (lang: Idioma) => {
     setIdiomaLocal(lang);
-    localStorage.setItem("xidmet_lang", lang);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("xidmet_lang", lang);
+    }
   };
 
   const t = diccionario[idioma];

@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, animate } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { XIDBOT_FLOWS, XIDBOT_DISCLAIMER, BotStep } from "@/utils/xidbot";
+import { XIDBOT_FLOWS, XIDBOT_DISCLAIMER } from "@/utils/xidbot";
 import { useLanguage } from "@/components/TranslateButton";
 
 interface Message {
@@ -11,6 +11,12 @@ interface Message {
   sender: "bot" | "user";
   text: string;
   price?: number; 
+}
+
+let globalMessageId = 0;
+function getNextMessageId() {
+  globalMessageId += 1;
+  return `msg_${globalMessageId}_${Math.random().toString(36).slice(2, 7)}`;
 }
 
 function Counter({ value }: { value: number }) {
@@ -45,26 +51,10 @@ export default function Xidbot() {
     },
   ]);
   
-  const [currentStep, setCurrentStep] = useState<BotStep>(() => currentFlow.inicio);
+  const [currentStepId, setCurrentStepId] = useState<string>("inicio");
+  const currentStep = currentFlow[currentStepId] || currentFlow.inicio;
   const [isFinished, setIsFinished] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  // Manejo limpio del cambio de idioma en caliente sin destruir el estado de finalización
-  useEffect(() => {
-    if (messages.length === 1 && messages[0].id === "initial-msg") {
-      setMessages([
-        {
-          id: "initial-msg",
-          sender: "bot",
-          text: currentFlow.inicio.question,
-        },
-      ]);
-    }
-    // Si no está finalizado, actualizamos el puntero del paso actual por si cambia de idioma a mitad de camino
-    if (!isFinished) {
-      setCurrentStep(currentFlow[currentStep.id] || currentFlow.inicio);
-    }
-  }, [idioma, currentFlow]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -72,7 +62,7 @@ export default function Xidbot() {
 
   const handleOptionClick = (option: { text: string; nextStep: string; result?: string; basePrice?: number; icon?: string }) => {
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: getNextMessageId(),
       sender: "user",
       text: option.text,
     };
@@ -85,7 +75,7 @@ export default function Xidbot() {
         const restartQuestion = idioma === "en" ? "Would you like to start a new inquiry?" : "¿Te gustaría empezar una nueva consulta?";
         
         const botFinalMessage: Message = {
-          id: (Date.now() + 1).toString(),
+          id: getNextMessageId(),
           sender: "bot",
           text: `${recommendationPrefix} ${option.result}\n\n${restartQuestion}`,
           price: option.basePrice, 
@@ -95,9 +85,9 @@ export default function Xidbot() {
       } else {
         const nextTarget = currentFlow[option.nextStep];
         if (nextTarget) {
-          setCurrentStep(nextTarget);
+          setCurrentStepId(option.nextStep);
           const botNextMessage: Message = {
-            id: (Date.now() + 1).toString(),
+            id: getNextMessageId(),
             sender: "bot",
             text: nextTarget.question,
           };
@@ -110,12 +100,12 @@ export default function Xidbot() {
   const handleRestart = () => {
     setMessages([
       {
-        id: Date.now().toString(),
+        id: "initial-msg",
         sender: "bot",
         text: currentFlow.inicio.question,
       },
     ]);
-    setCurrentStep(currentFlow.inicio);
+    setCurrentStepId("inicio");
     setIsFinished(false);
   };
 
@@ -166,7 +156,7 @@ export default function Xidbot() {
                     : "bg-slate-800 text-slate-200 border border-slate-700 rounded-bl-none whitespace-pre-line"
                 }`}
               >
-                {msg.text}
+                {msg.id === "initial-msg" ? currentFlow.inicio.question : msg.text}
                 
                 {/* RENDER DINÁMICO DEL PRECIO */}
                 {msg.price !== undefined && msg.price > 0 && (

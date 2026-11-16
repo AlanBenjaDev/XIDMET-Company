@@ -5,17 +5,22 @@ import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
 import { useLanguage } from '@/components/TranslateButton'
 
+interface ContactFormData {
+  name: string
+  email: string
+  message: string
+}
+
 export default function Contact() {
-  const { register, handleSubmit, reset } = useForm()
+  const { register, handleSubmit, reset } = useForm<ContactFormData>()
   const [isSent, setIsSent] = useState(false)
   const { t } = useLanguage()
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: ContactFormData) => {
     setIsSent(true)
     reset()
 
-    // Usamos una verificación segura o la string por defecto por si TypeScript protesta
-    const baseMessage = (t.contacto as any).waMensaje || 
+    const baseMessage = t.contacto.waMensaje || 
       "Hola Xidmet Company, me interesa una solución técnica. Nombre: {name}, Email: {email}, Consulta: {message}";
 
     const whatsappMessage = baseMessage
@@ -63,7 +68,7 @@ export default function Contact() {
           animate={{ scale: 1, opacity: 1 }}
           className="mb-8 p-4 bg-[#10b981]/10 border border-[#10b981]/20 rounded-xl text-[#34d399] font-medium"
         >
-          {(t.contacto as any).alertaExito || "¡Solicitud recibida! Conectando con nuestro centro técnico..."}
+          {t.contacto.alertaExito || "¡Solicitud recibida! Conectando con nuestro centro técnico..."}
         </motion.div>
       )}
 
@@ -71,19 +76,19 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             {...register('name', { required: true })}
-            placeholder={(t.contacto as any).phNombre || "Nombre completo"}
+            placeholder={t.contacto.phNombre || "Nombre completo"}
             className="w-full px-5 py-4 rounded-xl bg-[#0f172a] border border-[#1e293b] focus:border-[#10b981] focus:outline-none transition-colors text-white"
           />
           <input
             {...register('email', { required: true })}
-            placeholder={(t.contacto as any).phEmail || "Correo electrónico"}
+            placeholder={t.contacto.phEmail || "Correo electrónico"}
             className="w-full px-5 py-4 rounded-xl bg-[#0f172a] border border-[#1e293b] focus:border-[#10b981] focus:outline-none transition-colors text-white"
           />
         </div>
         
         <textarea
           {...register('message', { required: true })}
-          placeholder={(t.contacto as any).phMensaje || "Describí tu necesidad (Cámaras, iluminación, portones, etc.)"}
+          placeholder={t.contacto.phMensaje || "Describí tu necesidad (Cámaras, iluminación, portones, etc.)"}
           rows={4}
           className="w-full px-5 py-4 rounded-xl bg-[#0f172a] border border-[#1e293b] focus:border-[#10b981] focus:outline-none transition-colors text-white resize-none"
         />
